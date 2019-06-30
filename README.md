@@ -36,7 +36,7 @@ Forward speed can be set using the *faster*/*slower* buttons on the dispenser it
 
 If *forward steps* is zero, the syringe plunger is pushed down as long as you press the *push* button or the foot switch pedal. This is useful for making beads, and the normal setting when dispensing solder paste. If *forward steps* is non-zero, pushing the *forward* button or the foot switch moves the plunger down exactly the number of steps in the settings. This is useful for making precise, repeatable dots, e.g. as a glue or lubricating oil dispenser.
 
-Sometimes paste keeps oozing out after you stop dispensing. If *pullback steps* is non-zero, then after a *pullback delay* period of inactivity the plunger will move back *pullback steps*, to stop paste oozing out. How successful this is and how many steps the plunger needs to pull back to stop the oozing depends upon paste viscosity. *Pullback* works better with low viscosity liquids than for high viscosity liquids.
+Sometimes paste keeps oozing out after you stop dispensing. If *pullback steps* is non-zero, then after a *pullback delay* period of inactivity the plunger will move back *pullback steps*, to stop paste oozing out. How successful this is and how many steps the plunger needs to pull back to stop the oozing depends upon paste viscosity. *Pullback* works better with low viscosity liquids than with high viscosity liquids.
 
 ## Saved Profiles
 
