@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name paste_dispenser)(type KiCad)(uri ${KIPRJMOD}/paste_dispenser.pretty)(options "")(descr ""))
+  (lib (name digikey-footprints)(type KiCad)(uri /home/user/kicad/digikey-kicad-library/digikey-footprints.pretty)(options "")(descr ""))
+)

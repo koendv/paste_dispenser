@@ -1,0 +1,71 @@
+// Output pin driver for a 28BYJ-48 motor.
+
+#include <arduino.h>
+
+#include "motor_io.h"
+
+// Using port C.
+#define MOTOR_PORT      (PORTC)
+#define MOTOR_PORT_DDR  (DDRC)
+
+namespace motor_io {
+
+// Using a single port for all 4 motor pins so we can update them in a single write. 
+// If using a unipolar motor, connect the motor's fifth wire (28byj-48: red) to ground.
+// Motor blue wire. Arduino pin 2. // XXX check pin numbers and wire colors
+static const uint8_t kPin1Mask = (1 << 2);  
+
+// Motor pink wire. Arduino pin 3.
+static const uint8_t kPin2Mask = (1 << 3); 
+
+ // Motor yellow wire. Arduino pin 4.
+static const uint8_t kPin3Mask = (1 << 1); 
+
+ // Motor orange wire. Arduino pin 5.
+static const uint8_t kPin4Mask = (1 << 0);  
+
+// Activated pins in each step throughout one cycle.
+static const uint8_t kStepTable[] = {
+  kPin1Mask,               // step 0
+  kPin1Mask | kPin2Mask,   // step 1
+  kPin2Mask,               // step 2
+  kPin2Mask | kPin3Mask,   // step 3
+  kPin3Mask,               // step 4
+  kPin3Mask | kPin4Mask,   // step 5
+  kPin4Mask,               // step 6
+  kPin4Mask | kPin1Mask     // step 7  
+};
+
+// A union of all pin masks.
+static const uint8_t kAllPinsMask = kPin1Mask | kPin2Mask | kPin3Mask | kPin4Mask;
+
+// We consider only the last three bits of the step counter (8 steps per cycle).
+static const uint8_t kStepMask = 0x7;
+
+// Set 4 pins per their respective bits in values. All other bits of values
+// are ignored.
+static inline void updatePins(uint8_t values) {
+  cli();
+  MOTOR_PORT = ((MOTOR_PORT & ~kAllPinsMask) | values); 
+  sei();  
+}
+
+void sleep() {
+  updatePins(0);
+}
+
+void setStep(uint8_t step) {
+  const uint8_t step_index = step & kStepMask;
+  updatePins(kStepTable[step_index]);
+}
+
+void setup() {
+  // Set motor pins as outputs.
+  MOTOR_PORT_DDR |= kAllPinsMask;
+  
+  // Pins are off.
+  updatePins(0);
+}
+  
+}  // namespace motor_io
+// not truncated
