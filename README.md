@@ -20,7 +20,7 @@ The board also has a LED which blinks faster when the motor runs faster.
 
 ## Menu
 
-There is a settings menu on the serial port. Access the console using a vt100 ansi terminal emulation, e.g. [PuTTY](https://putty.org/) on Windows, or minicom on Linux. On Android, use an USB OTG adapter and Serial USB Terminal. The settings menu allows you to configure the solder paste dispenser. The menu looks like this:
+There is a settings menu on the serial port. Access the console using a vt100 ansi terminal emulation, e.g. [PuTTY](https://putty.org/) on Windows, or minicom on Linux. On Android, use an USB OTG adapter and *Serial USB Terminal*. The settings menu allows you to configure the solder paste dispenser. The menu looks like this:
 
 	[f] Forward speed 125 steps/sec
 	[s] Forward steps 0 steps
@@ -36,7 +36,7 @@ Forward speed can be set using the *faster*/*slower* buttons on the dispenser it
 
 If *forward steps* is zero, the syringe plunger is pushed down as long as you press the *push* button or the foot switch pedal. This is useful for making beads, and the normal setting when dispensing solder paste. If *forward steps* is non-zero, pushing the *forward* button or the foot switch moves the plunger down exactly the number of steps in the settings. This is useful for making precise, repeatable dots, e.g. as a glue or lubricating oil dispenser.
 
-Sometimes paste keeps oozing out after you stop dispensing. If *pullback steps* is non-zero, then after a *pullback delay* period of inactivity the plunger will move back *pullback steps*, to stop paste oozing out. How successful this is and how many steps the plunger needs to pull back to stop the oozing depends upon paste viscosity. *Pullback* works better with low viscosity liquids than with high viscosity liquids.
+Sometimes paste keeps oozing out after you stop dispensing. If *pullback steps* is non-zero, then after a *pullback delay* period of inactivity the plunger will move back *pullback steps*, to stop paste oozing out. How successful this is and how many steps the plunger needs to pull back to stop the oozing depends upon paste viscosity. *Pullback* works better with low viscosity liquids than with high viscosity paste.
 
 ## Saved Profiles
 
@@ -50,7 +50,7 @@ The voltage range is 4.5V-5.5V. More than 5.5V is too much for the atmega328P mi
 
 ## Connecting everything
 
-To access the built-in console, a USB to serial adapter needs to be connected between solder paste dispenser and PC.
+To access the built-in console, a USB to serial adapter needs to be connected between solder paste dispenser and PC. Look for "FTDI FT232RL USB to 5V TTL Serial" on your favorite internet shopping site.
  
 ## Practice makes perfect
 
@@ -93,7 +93,7 @@ GND|Uno GND|6
 
 Find `avrdude` in your Arduino IDE directories, change to the appropriate directory and do the following incantation:
 `./bin/avrdude -C ./etc/avrdude.conf  -p m328p -P /dev/cu.usbmodem1d11 -c avrisp -b 19200 -U flash:w:/Users/koen/Documents/Arduino/paste_injector/arduino/arduino.ino.with_bootloader.eightanaloginputs.hex`
-where `/dev/cu.usbmodem1d11` is the usb port of your Arduino Uno (On linux probably `/dev/ttyACM0`). Flashing should take approx. 20 seconds, and ends with "`xxx bytes of flash verified`" and "`Fuses OK`". This finishes writing bootloader and sketch to the solder paste dispenser. You can now disconnect the Arduino Uno. 
+where `/dev/cu.usbmodem1d11` is the usb port of your Arduino Uno (On linux probably `/dev/ttyACM0`). Flashing should take about 20 seconds, and ends with "`xxx bytes of flash verified`" and "`Fuses OK`".
 
 
     Mac-Pro:avr koen$ ./bin/avrdude -C ./etc/avrdude.conf  -p m328p -P /dev/cu.usbmodem1d11 -c avrisp -b 19200 -U flash:w:/Users/koen/Documents/Arduino/paste_injector/arduino/arduino.ino.with_bootloader.eightanaloginputs.hex
@@ -128,11 +128,13 @@ where `/dev/cu.usbmodem1d11` is the usb port of your Arduino Uno (On linux proba
     
     avrdude done.  Thank you.
 
+This finishes writing bootloader and sketch to the solder paste dispenser. You can now disconnect the Arduino Uno.
+
 ## Making your own
 
-The github contains arduino source and kicad pcb design files. You'll find the [schematic](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_schematic.pdf), the [board layout](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_board.pdf), the [bill of materials](https://raw.githubusercontent.com/koendv/paste_dispenser4zapta/master/kicad/paste_dispenser/paste_dispenser.csv). Three pcbs cost $9.35 at [oshpark](http://www.oshpark.com/shared_projects/V5txbi41). 
+The github contains arduino source and kicad pcb design files. You'll find the [schematic](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_schematic.pdf), the [board layout](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_board.pdf), the [bill of materials](https://github.com/koendv/paste_dispenser4zapta/blob/master/kicad/paste_dispenser/paste_dispenser.csv). This is a [link to the pcb](http://www.oshpark.com/shared_projects/V5txbi41) I ordered at oshpark.
 
-If you prefer not to solder, you can also build the controller on a breadboard, like in this [fritzing sketch](https://github.com/koendv/paste_dispenser4zapta/raw/master/fritzing/paste_dispenser_fritzing.pdf).
+If you prefer not to solder you can also build the controller on a breadboard, like in this [fritzing sketch](https://github.com/koendv/paste_dispenser4zapta/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V Arduino Pro Mini and a TB6612 breakout module.
 
 ## Note
 
