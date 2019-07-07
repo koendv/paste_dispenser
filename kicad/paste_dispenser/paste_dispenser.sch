@@ -498,7 +498,7 @@ Wire Wire Line
 Text Label 9350 3900 0    50   ~ 0
 LED
 Text Notes 800  7500 0    50   ~ 0
-5V stepper J3 is e.g. 28BYJ-48.\nOLED J4 is generic 0.91" 128x32 I2C SSD1306.\nConnector J2 is power, serial port and footswitch connector. \nConnect terminal using FTDI TTL-232R-5V or equivalent.\nOptional normally open footswitch connects between J2 pin 4 and ground.
+5V stepper J3 is e.g. 28BYJ-48.\nOLED J4 is generic 0.91" 128x32 I2C SSD1306.\nConnector J2 is power, serial port and footswitch connector. \nConnect terminal using FTDI TTL-232R-5V or equivalent.\nOptional normally open footswitch connects between J2 pin 'FOOTSWITCH' and ground.
 Text Notes 8500 1450 0    50   ~ 0
 Yellow
 Text Notes 8500 1550 0    50   ~ 0
