@@ -1051,11 +1051,11 @@ F 0 "J2" H 5800 4400 50  0000 L CNN
 F 1 "EXT" H 5800 4300 50  0000 L CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical" H 5700 4400 50  0001 C CNN
 F 3 "~" H 5700 4400 50  0001 C CNN
-F 4 "Molex" H 5700 4400 50  0001 C CNN "Manufacturer"
-F 5 "70553-0005" H 5700 4400 50  0001 C CNN "Manufacturer Part No"
+F 4 "TE" H 5700 4400 50  0001 C CNN "Manufacturer"
+F 5 "5-102203-3" H 5700 4400 50  0001 C CNN "Manufacturer Part No"
 F 6 "mouser.com" H 5700 4400 50  0001 C CNN "Source 1"
-F 7 "538-70553-0005" H 5700 4400 50  0001 C CNN "Source 1 Part No"
-F 8 "Mates with Molex 50-57-9406" H 5700 4400 50  0001 C CNN "Note"
+F 7 "571-5-102203-3" H 5700 4400 50  0001 C CNN "Source 1 Part No"
+F 8 "Mates with Dupont connectors" H 5700 4400 50  0001 C CNN "Note"
 	1    5700 4400
 	1    0    0    -1  
 $EndComp

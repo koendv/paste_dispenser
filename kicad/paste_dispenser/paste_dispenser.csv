@@ -21,7 +21,7 @@ FID1 FID2 FID3 ,3,Fiducial,Fiducial:Fiducial_1mm_Dia_2.54mm_Outer_CopperTop, , ,
 J1 ,1,ISP,Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical,Adafruit,2822,,mouser.com,485-2822, , ,2x20 breakaway header  break off 2x03 strip
 J4 ,1,OLED,Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical,Harwin,M20-7820442,,mouser.com,855-M20-7820442, , , 
 J3 ,1,STEPPER,Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical,-,DNP,, , , , , 
-J2 ,1,EXT,Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical,Molex,70553-0005,,mouser.com,538-70553-0005, , ,Mates with Molex 50-57-9406
+J2 ,1,EXT,Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical,TE,5-102203-3,,mouser.com,571-5-102203-3, , ,Mates with Dupont connectors
 Q1 ,1,SSM3J328R_LF,Package_TO_SOT_SMD:SOT-23,Toshiba,SSM3J328R LF ,,mouser.com,757-SSM3J328RLF, , , 
 R1 ,1,10k,Resistor_SMD:R_0805_2012Metric,Yageo,AC0805FR-0710KL,,mouser.com,603-AC0805FR-0710KL, , , 
 R2 ,1,1k6,Resistor_SMD:R_0805_2012Metric,Yageo,AC0805FR-071K6L,,mouser.com,603-AC0805FR-071K6L, , , 
