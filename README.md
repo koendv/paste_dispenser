@@ -1,14 +1,15 @@
 # Solder Paste Dispenser
 
-This is a controller board for [zapta solder paste dispensers](https://www.thingiverse.com/thing:1119914). The solder paste dispenser supports a foot pedal switch, an OLED display, and a menu system. The board has been designed with easy soldering in mind.
+![](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/paste_dispenser_front.png)
 
+This is a controller board for [solder paste dispensers](https://www.thingiverse.com/thing:1119914). The solder paste dispenser supports a foot pedal switch, an OLED display, and a menu system. The board has been designed with easy soldering in mind.
 ## Foot switch
 
 Dispensing can be initiated either by the *push* button on the dispenser, or by pushing a foot pedal switch. 
 
-I recommend using a foot switch because it frees up a hand. Using a foot switch is also more stable; when pushing the button on the dispenser itself the syringe always moves a little bit. 
+A foot pedal switch has the advantage that it frees up a hand. Using a foot switch is also more stable; when pushing a button on the dispenser itself the syringe always moves a little bit. 
 
-Suitable foot pedals are [Adafruit product ID 423](https://www.adafruit.com/product/423) or [Sparkfun COM-11192](https://www.sparkfun.com/products/11192). These foot pedals are simple on/off switches,  normally open. Speed controller foot pedals with a potentiometer will **not** work.
+Suitable foot pedals are [Adafruit product ID 423](https://www.adafruit.com/product/423), [Sparkfun COM-11192](https://www.sparkfun.com/products/11192), also found at ebay and aliexpress. These foot pedals are simple on/off switches,  normally open. Speed controller foot pedals with a potentiometer will **not** work.
 
 ## Display
 
@@ -51,6 +52,11 @@ The voltage range is 4.5V-5.5V. More than 5.5V is too much for the atmega328P mi
 ## Connecting everything
 
 To access the built-in console, a USB to serial adapter needs to be connected between solder paste dispenser and PC. Look for "FTDI FT232RL USB to 5V TTL Serial" on your favorite internet shopping site.
+
+* J1 is the ISP connector for downloading the initial firmware to the atmega microcontroller.
+* J2 connects to the USB to serial adapter (pins +5V, RX, TX, GND) and the footswitch (pins FTSW, GND).
+* J3 is the connector for the stepper motor. Both unipolar and bipolar steppers can be connected. Connect one coil to pins A1 and A2, and one coil to pins B1 and B2. Connect the center tap of unipolar steppers to pin GND.
+* J4 is the OLED display connector. 
  
 ## Practice makes perfect
 
@@ -60,27 +66,29 @@ Before filling the syringe, run a nylon wire inside the syringe body. A small pi
 
 ## Zapta
 
-The controller board is 40mm x 30mm, and fits on [zapta](https://www.thingiverse.com/thing:1119914) solder paste dispensers with a [28BYJ-48](https://www.adafruit.com/product/858) stepper. However, the controller is not specific to *zapta* solder paste dispensers; if a syringe pump uses a 5V, 5- or 6-wire unipolar or 4-wire bipolar stepper motor, there's a reasonable chance this will work. Just check the stepper works at 5V and current stays below 1.2 amps.
+The controller board is 40mm x 30mm, and fits on [zapta](https://www.thingiverse.com/thing:1119914) solder paste dispensers with a [28BYJ-48](https://www.adafruit.com/product/858) stepper. However, the controller is not specific to any specific solder paste dispenser; if a syringe pump uses a 5- or 6-wire unipolar stepper or a 4-wire bipolar stepper motor, there's a reasonable chance this will work. Just check the stepper works at 5V and current stays below 1.2 amps.
 
 ## Firmware
 
 The solder paste dispenser is an arduino system and can be programmed using the arduino IDE. 
 
-There is no capacitor between DTR and reset. This avoids spurious resets when connecting to the serial port. If you want to develop software for this board you have three options: 
+There is no capacitor between DTR and reset. This avoids spurious resets when connecting to the serial port. But this also means that if you want to develop firmware for this board there is no automatic reset before uploading. Three options: 
 
-* Upload firmware using the ISP connector 
+* Upload firmware using the ISP connector. This has to be done at least once, to upload the bootloader.
 * Use the serial port to upload. Just before uploading briefly connect RST and ground - they are next to each other on the ISP connector. 
-* When developing connect a 100n capacitor between serial adapter DTR and ISP connector RST pin. This allows the IDE to reset the microcontroller automatically.
+* When developing connect a 100n capacitor between serial adapter DTR and ISP connector RST pin. This allows the IDE to reset the microcontroller automatically just before uploading using the serial port.
 
 ## Compiling
 
-The first compile is the hardest. Open the Arduino IDE. Compile the *paste dispenser* sketch, with these settings:
+The first compile is the hardest.
+
+Open the Arduino IDE. Compile the *paste dispenser* sketch, with these settings:
 
 * Board: Arduino Pro or Pro Mini, 
 * Processor: Atmega328P (5V, 16MHz).
 
-Generate an Intel Hex file with _Sketch -> Export Compiled Binary_. This creates two .hex files in the project directory, `arduino.ino.eightanaloginputs.hex` and `arduino.ino.with_bootloader.eightanaloginputs.hex`. 
-Now connect a 5V Arduino, e.g. an Arduino Uno to your system. Compile and upload the _File -> Examples -> ArduinoISP_ sketch to the Uno. Connect the Arduino Uno to the solder paste dispenser board as follows:
+Generate an Intel Hex file with _Sketch -> Export Compiled Binary_. This creates two .hex files in the project directory, `arduino.ino.eightanaloginputs.hex` and `arduino.ino.with_bootloader.eightanaloginputs.hex`. The hex file we need is the one with the bootloader.
+As ISP programmer you need an arduino with the same logic voltage as the target system. Connect a 5V Arduino, e.g. an Arduino Uno to your system. Compile and upload the _File -> Examples -> ArduinoISP_ sketch to the Uno. Connect the Arduino Uno to the solder paste dispenser board as follows:
 
 Signal|Uno    |ISP pin
 ------|-------|--------
@@ -128,17 +136,17 @@ where `/dev/cu.usbmodem1d11` is the usb port of your Arduino Uno (On linux proba
     
     avrdude done.  Thank you.
 
-This finishes writing bootloader and sketch to the solder paste dispenser. You can now disconnect the Arduino Uno.
+This finishes writing bootloader and sketch to the solder paste dispenser. You can now disconnect the Arduino Uno. Now the atmega328p contains a bootloader you can upload sketches using the solder paste dispenser serial port.
 
 ## Making your own
 
-The github contains arduino source and kicad pcb design files. You'll find the [schematic](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_schematic.pdf), the [board layout](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_board.pdf), the [bill of materials](https://github.com/koendv/paste_dispenser4zapta/blob/master/kicad/paste_dispenser/paste_dispenser.csv). This is a [link to the pcb](http://www.oshpark.com/shared_projects/V5txbi41) I ordered at oshpark.
+The github contains arduino source and kicad pcb design files. You'll find the [schematic](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_schematic.pdf), the [board layout](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_board.pdf), and the [bill of materials](https://github.com/koendv/paste_dispenser4zapta/blob/master/kicad/paste_dispenser/paste_dispenser.csv). This is a [link to the pcb](http://www.oshpark.com/shared_projects/V5txbi41) as an orderable shared project at oshpark, and these are the components as a [shared project at Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=61ff8d7d43).
 
-If you prefer not to solder you can also build the controller on a breadboard, like in this [fritzing sketch](https://github.com/koendv/paste_dispenser4zapta/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V Arduino Pro Mini and a TB6612 breakout module.
+If you prefer not to solder you can also build the controller on a breadboard, as in this [fritzing sketch](https://github.com/koendv/paste_dispenser4zapta/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V Arduino Pro Mini and a TB6612 breakout module.
 
 ## Note
 
 The kicad pcb hardware design is under Creative Commons - Share Alike license. In the arduino sketch software all files marked "Koen De Vleeschauwer 2019 CC0" are in the public domain.
 
-A last note: A solder paste dispenser is a small motor which pushes the plunger of a syringe. You can use it for solder paste, but it can also be used as a syringe pump, to create small dots of glue in a precise and repeatable way, or to put small drops of lubricating oil on a mechanism. Have fun!
+A last note: A solder paste dispenser is a small motor which pushes the plunger of a syringe. You can use it for solder paste, but it can also be used as a syringe pump, to create small dots of glue in a precise and repeatable way, or to put small drops of lubricating oil on a mechanism.
   
