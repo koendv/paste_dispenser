@@ -2,14 +2,15 @@
 
 ![](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/paste_dispenser_front.png)
 
-This is a controller board for [solder paste dispensers](https://www.thingiverse.com/thing:1119914). The solder paste dispenser supports a foot pedal switch, an OLED display, and a menu system. The board has been designed with easy soldering in mind.
+This is a controller board for [solder paste dispensers](https://www.thingiverse.com/thing:1119914). The controller supports a unipolar or bipolar stepper motor, a foot pedal switch, an OLED display, and a menu system. The board has been designed with easy soldering in mind.
+
 ## Foot switch
 
 Dispensing can be initiated either by the *push* button on the dispenser, or by pushing a foot pedal switch. 
 
 A foot pedal switch has the advantage that it frees up a hand. Using a foot switch is also more stable; when pushing a button on the dispenser itself the syringe always moves a little bit. 
 
-Suitable foot pedals are [Adafruit product ID 423](https://www.adafruit.com/product/423), [Sparkfun COM-11192](https://www.sparkfun.com/products/11192), also found at ebay and aliexpress. These foot pedals are simple on/off switches,  normally open. Speed controller foot pedals with a potentiometer will **not** work.
+Suitable foot pedals are [Adafruit product ID 423](https://www.adafruit.com/product/423) and [Sparkfun COM-11192](https://www.sparkfun.com/products/11192), also found at ebay and aliexpress. These foot pedals are simple on/off switches,  normally open. Speed controller foot pedals with a potentiometer will **not** work.
 
 ## Display
 
