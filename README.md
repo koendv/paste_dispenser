@@ -10,7 +10,9 @@ Dispensing can be initiated either by the *push* button on the dispenser, or by 
 
 A foot pedal switch has the advantage that it frees up a hand. Using a foot switch is also more stable; when pushing a button on the dispenser itself the syringe always moves a little bit. 
 
-Suitable foot pedals are [Adafruit product ID 423](https://www.adafruit.com/product/423) and [Sparkfun COM-11192](https://www.sparkfun.com/products/11192), also found at ebay and aliexpress. These foot pedals are simple on/off switches,  normally open. Speed controller foot pedals with a potentiometer will **not** work.
+Suitable foot pedals are [Adafruit product ID 423](https://www.adafruit.com/product/423) and [Sparkfun COM-11192](https://www.sparkfun.com/products/11192).
+
+These foot pedal switches, also for sale at ebay and aliexpress, are simple on/off switches, normally open. Speed controller foot pedals with a potentiometer will **not** work.
 
 ## Display
 
@@ -22,7 +24,7 @@ The board also has a LED which blinks faster when the motor runs faster.
 
 ## Menu
 
-There is a settings menu on the serial port. Access the console using a vt100 ansi terminal emulation, e.g. [PuTTY](https://putty.org/) on Windows, or minicom on Linux. On Android, use an USB OTG adapter and *Serial USB Terminal*. The settings menu allows you to configure the solder paste dispenser. The menu looks like this:
+There is a settings menu on the serial port. Access the menu using a vt100 ansi terminal emulation, e.g. [PuTTY](https://putty.org/) on Windows, or minicom on Linux. On Android, use an USB OTG adapter and *Serial USB Terminal*. The settings menu allows you to configure the solder paste dispenser. The menu looks like this:
 
 	[f] Forward speed 125 steps/sec
 	[s] Forward steps 0 steps
@@ -52,10 +54,10 @@ The voltage range is 4.5V-5.5V. More than 5.5V is too much for the atmega328P mi
 
 ## Connecting everything
 
-To access the built-in console, a USB to serial adapter needs to be connected between solder paste dispenser and PC. Look for "FTDI FT232RL USB to 5V TTL Serial" on your favorite internet shopping site.
+The controller board has four headers:
 
 * J1 is the ISP connector for downloading the initial firmware to the atmega microcontroller.
-* J2 connects to the USB to serial adapter (pins +5V, RX, TX, GND) and the footswitch (pins FTSW, GND).
+* J2 connects to an USB to serial adapter (pins +5V, RX, TX, GND) and the footswitch (pins FTSW, GND).
 * J3 is the connector for the stepper motor. Both unipolar and bipolar steppers can be connected. Connect one coil to pins A1 and A2, and one coil to pins B1 and B2. Connect the center tap of unipolar steppers to pin GND.
 * J4 is the OLED display connector. 
  
