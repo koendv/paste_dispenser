@@ -64,7 +64,7 @@ The controller board has four headers:
  
 ## Practice makes perfect
 
-For practice fill a syringe with a small amount (approx. 1 ml) of toothpaste. Print a pcb at scale 1:1 in black and white on paper, [like this](https://github.com/koendv/paste_dispenser4zapta/raw/master/toothpaste-practice.pdf), and practice depositing toothpaste until you are comfortable with the solder paste dispenser.
+For practice fill a syringe with a small amount (approx. 1 ml) of toothpaste. Print a pcb at scale 1:1 in black and white on paper, [like this](https://github.com/koendv/paste_dispenser4zapta/raw/master/doc/toothpaste-practice.pdf), and practice depositing toothpaste until you are comfortable with the solder paste dispenser.
 
 Before filling the syringe, run a nylon wire inside the syringe body. A small piece of fishing line is suitable. This nylon wire creates a small leak in the seal between plunger and syringe body, allowing the air to escape while you push the plunger down. Once the plunger is down, simply pull the nylon wire out and you can begin dispensing.
 
@@ -148,9 +148,9 @@ The github contains arduino source and kicad pcb design files. You'll find the [
 
 If you prefer not to solder you can also build the controller on a breadboard, as in this [fritzing sketch](https://github.com/koendv/paste_dispenser4zapta/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V Arduino Pro Mini and a TB6612 breakout module.
 
-## Note
+## Notes
 
-* The kicad pcb hardware design is under Creative Commons - Share Alike license.
+* The kicad pcb hardware design is under Creative Commons - Attribution Share Alike license.
 
 * A solder paste dispenser is a small motor which pushes the plunger of a syringe. You can use it for solder paste, but it can also be used as a syringe pump, to create small dots of glue in a precise and repeatable way, or to put small drops of lubricating oil on a mechanism.
   
