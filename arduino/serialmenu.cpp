@@ -61,7 +61,7 @@ namespace settings {
   const static char backwardSpeedName[] PROGMEM = "Backward speed";
   const static char pullbackDelayName[] PROGMEM = "Pullback delay";
   const static char pullbackStepsName[] PROGMEM = "Pullback steps";
-  const static char microStepsName[] PROGMEM = "Microsteps";
+  const static char microStepsName[] PROGMEM = "Microstepping";
   const static char profileNumberName[] PROGMEM = "Profile number";
   const static char readConfigName[] PROGMEM = "Restore profile";
   const static char writeConfigName[] PROGMEM = "Save profile";

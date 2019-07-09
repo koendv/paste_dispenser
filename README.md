@@ -31,7 +31,7 @@ There is a settings menu on the serial port. Access the menu using a vt100 ansi 
 	[b] Backward speed 500 steps/sec
 	[d] Pullback delay 2000 millisec
 	[p] Pullback steps 0 steps
-	[m] Microsteps 2 
+	[m] Microstepping 2 
 	[n] Profile number 0
 	[r] Restore profile
 	[w] Save profile
