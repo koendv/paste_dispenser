@@ -1,5 +1,3 @@
-/* Koen De Vleeschauwer 2019. */
-
 /* 
  * Reading and debouncing tactile switches.
  * Using the same port for all buttons. This allows reading all buttons in a single byte read. 

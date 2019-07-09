@@ -1,5 +1,3 @@
-/* Koen De Vleeschauwer 2019. */
-
 #include "pins.h"
 #include "settings.h"
 #include "motor.h"
@@ -14,14 +12,6 @@
 void setup() {
   Serial.begin(115200);
   Serial.println();
-  Serial.print(F("setup"));
-
-  pinMode(kStepperStandbyPin, OUTPUT);
-  pinMode(kStepperPwmAPin, OUTPUT);
-  pinMode(kStepperPwmBPin, OUTPUT);
-  digitalWrite(kStepperStandbyPin, HIGH);
-  digitalWrite(kStepperPwmAPin, HIGH);
-  digitalWrite(kStepperPwmBPin, HIGH);
 
   /* buttons */
   pinMode(kFootswitchPin, INPUT_PULLUP);
@@ -34,23 +24,16 @@ void setup() {
   pinMode(13, INPUT); // XXX
   pinMode(kLedPin, OUTPUT);
 
-  Serial.print(F(" motor"));
   motor::setup();
-  Serial.print(F(" buttons"));
   buttons::setup();
-  Serial.print(F(" oled"));
   oled::setup();
-  Serial.print(F(" led"));
   breathingLed::setup();
-  Serial.print(F(" settings"));
   settings::setup();
-  
   fsm::setup();
   loopsPerSecond::setup();
 
   motor::setSpeed(0, true);
   
-  Serial.println();
   Serial.println(F("ready"));
 
   return;

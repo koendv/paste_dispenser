@@ -1,7 +1,6 @@
-/* Koen De Vleeschauwer 2019. */
-
 #include <arduino.h>
 #include "settings.h"
+#include "tb6612.h"
 
 
   /* 
@@ -10,7 +9,7 @@
 
 namespace settings {
   static const int8_t kNoSelection = -1;
-  static const int8_t MAX_MENU = 9;
+  static const int8_t MAX_MENU = 10;
   static enum {KEYBD_CHAR, KEYBD_NUMBER, KEYBD_STRING, KEYBD_ESC, KEYBD_ESC_BRACKET, KEYBD_ESC_O} keybd_state = KEYBD_CHAR;
   long last_time_keybd_millis = 0;
   static const uint16_t kKeybdTimeout = 2 * 1000; /* 2 seconds timeout for multi-character keycodes */
@@ -51,9 +50,10 @@ namespace settings {
   const static char backwardSpeedHelp[] PROGMEM = "speed when backward button pressed.";
   const static char pullbackDelayHelp[] PROGMEM = "time to wait after forward motion before pulling back.";
   const static char pullbackStepsHelp[] PROGMEM = "number of steps to pull back. if 0 don't pull back.";
+  const static char microStepsHelp[] PROGMEM = "microsteps per full step. valid values are 1, 2, 4, 5, 16, 32, 64.";
   const static char profileNumberHelp[] PROGMEM = "active profile";
   const static char readConfigHelp[] PROGMEM = "revert to saved";
-  const static char writeConfigHelp[] PROGMEM = "save to eeprom";
+  const static char writeConfigHelp[] PROGMEM = "save to non-volatile memory";
   const static char helpHelp[] PROGMEM = "this";
 
   const static char forwardSpeedName[] PROGMEM = "Forward speed";
@@ -61,6 +61,7 @@ namespace settings {
   const static char backwardSpeedName[] PROGMEM = "Backward speed";
   const static char pullbackDelayName[] PROGMEM = "Pullback delay";
   const static char pullbackStepsName[] PROGMEM = "Pullback steps";
+  const static char microStepsName[] PROGMEM = "Microsteps";
   const static char profileNumberName[] PROGMEM = "Profile number";
   const static char readConfigName[] PROGMEM = "Restore profile";
   const static char writeConfigName[] PROGMEM = "Save profile";
@@ -70,6 +71,14 @@ namespace settings {
   const static char stepsUnits[] PROGMEM = "steps";
   const static char millisecUnits[] PROGMEM = "millisec";
   const static char noUnits[] PROGMEM = "";
+
+  // callback for checking and setting microsteps
+  void microStepsCallback() {
+    // check value of microsteps is a power of two
+    if ((microSteps != 1) && (microSteps != 2) && (microSteps != 4) && (microSteps != 8) && (microSteps != 16) && (microSteps != 32)  && (microSteps != 64)) microSteps = 2; 
+    // set microsteps in tb6612 driver
+    tb6612::setMicrosteps(microSteps);
+  }
  
   // menu itself.
  
@@ -79,6 +88,7 @@ namespace settings {
     {'b', &backwardSpeed, backwardSpeedName, stepsPerSecUnits, 1, kMaxSpeed, backwardSpeedHelp, NULL},
     {'d', &pullbackDelay, pullbackDelayName, millisecUnits, 0, kMaxPullbackDelay, pullbackDelayHelp, NULL},
     {'p', &pullbackSteps, pullbackStepsName, stepsUnits, 0, kMaxSteps, pullbackStepsHelp, NULL},
+    {'m', &microSteps, microStepsName, noUnits, 1, kMaxMicrosteps, microStepsHelp, microStepsCallback},
     {'n', &profileNumber, profileNumberName, noUnits, 0, kMaxProfile, profileNumberHelp, NULL},
     {'r', NULL, readConfigName, NULL, 0, 0, readConfigHelp, readConfig},
     {'w', NULL, writeConfigName, NULL, 0, 0, writeConfigHelp, writeConfig},
@@ -254,6 +264,8 @@ namespace settings {
           // assign new value to selected variable
           if ((selectedMenuItem < MAX_MENU) && (thisItem.var != NULL))
             *thisItem.var = newval;
+          // if there is a callback execute it
+          if (thisItem.callback != NULL) thisItem.callback();
         }
         clearbuf();
         selectedMenuItem = kNoSelection;

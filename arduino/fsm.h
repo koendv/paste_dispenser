@@ -1,5 +1,3 @@
-/* Koen De Vleeschauwer 2019. */
-
 #ifndef FSM_H
 #define FSM_H
 

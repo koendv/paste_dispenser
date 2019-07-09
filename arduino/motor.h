@@ -5,20 +5,13 @@
 
 namespace motor {
 
-extern uint32_t steps;
+  extern uint16_t steps; // step counter
+  extern void setSpeed(uint16_t steps_per_sec, boolean is_forward); // Start rotation with speed steps_per_second and direction is_forward. 
 
-extern void setup();
-
-extern void loop();
-
-extern void sleep();
-
-// steps_per_sec 0 indicates stop. Turns on motor if it's off.
-extern void setSpeed(uint16_t steps_per_sec, boolean is_forward);
-
-extern bool isNonZeroSpeed();
+  extern void setup();
+  extern void loop();
   
-}  // namespace motor
+}
 
-#endif  // ifdef
+#endif
 // not truncated

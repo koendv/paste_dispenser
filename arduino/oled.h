@@ -1,5 +1,3 @@
-/* Koen De Vleeschauwer 2019. */
-
 /*
  * oled. 
  */

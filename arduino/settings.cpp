@@ -1,5 +1,3 @@
-/* Koen De Vleeschauwer 2019. */
-
 #include <arduino.h>
 #include <EEPROMWearLevel.h>
 #include "pins.h"
@@ -7,7 +5,7 @@
 #include "settings.h"
 #include "fsm.h"
 
-// Change EEPROM_LAYOUT_VERSION when number of indexes changed
+// Change EEPROM_LAYOUT_VERSION when number of indexes changed etc.
 
 #define EEPROM_LAYOUT_VERSION 1
 #define EEPROM_INDEXES 1
@@ -39,6 +37,7 @@ namespace settings {
   uint16_t backwardSpeed; // speed when backward button is pressed. default 500.
   uint16_t pullbackDelay; // time to wait after forward motion before pulling back. in milliseconds.
   uint16_t pullbackSteps; // number of steps to pull back. if 0 don't pull back (default).
+  uint16_t microSteps; // microsteps per full step. valid values are 1, 2, 4, 5, 16, 32, 64.
 
   /*
    * profiles as saved in eeprom
@@ -52,6 +51,7 @@ namespace settings {
     uint16_t backwardSpeed[kMaxProfile+1];
     uint16_t pullbackDelay[kMaxProfile+1];
     uint16_t pullbackSteps[kMaxProfile+1];
+    uint16_t microSteps[kMaxProfile+1];
   } profile;
 
   /*
@@ -65,6 +65,7 @@ namespace settings {
     backwardSpeed = constrain(backwardSpeed, 1, kMaxSpeed);
     pullbackDelay = constrain(pullbackDelay, 0, kMaxPullbackDelay);
     pullbackSteps = constrain(pullbackSteps, 0, kMaxSteps);
+    microSteps = constrain(microSteps, 1, kMaxMicrosteps);
     return;
   }
 
@@ -83,6 +84,7 @@ namespace settings {
     storedProfile.backwardSpeed[profileNumber] = backwardSpeed;
     storedProfile.pullbackDelay[profileNumber] = pullbackDelay;
     storedProfile.pullbackSteps[profileNumber] = pullbackSteps;
+    storedProfile.microSteps[profileNumber] = microSteps;
     EEPROMwl.put(EEPROM_INDEX_STORED_PROFILE, storedProfile);
     return;
   }
@@ -102,6 +104,7 @@ namespace settings {
         storedProfile.backwardSpeed[i] = kMaxSpeed;
         storedProfile.pullbackDelay[i] = 0;
         storedProfile.pullbackSteps[i] = 0;
+        storedProfile.microSteps[i] = kDefaultMicrosteps;
       }
       Serial.println(F("eeprom init"));
       EEPROMwl.put(EEPROM_INDEX_STORED_PROFILE, storedProfile);
@@ -113,6 +116,7 @@ namespace settings {
     backwardSpeed = storedProfile.backwardSpeed[profileNumber];
     pullbackDelay = storedProfile.pullbackDelay[profileNumber];
     pullbackSteps = storedProfile.pullbackSteps[profileNumber];
+    microSteps = storedProfile.microSteps[profileNumber];
     constrainConfig(); // make certain we have valid values
     return;
   }

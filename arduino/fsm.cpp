@@ -1,11 +1,10 @@
-/* Koen De Vleeschauwer 2019. */
-
 #include "pins.h"
 #include "settings.h"
 #include "motor.h"
 #include "buttons.h"
 #include "breathing_led.h"
 #include "oled.h"
+#include "tb6612.h"
 #include "fsm.h"
 
 //#define DEBUG 1
@@ -144,7 +143,7 @@ namespace fsm {
           motorOn(false);
           nextState(STATE_BACKWARD);
         } else if (millis() - idleTimeMillis > kIdleTimeoutMillis) {
-          digitalWrite(kStepperStandbyPin, LOW); // put driver in standby
+          tb6612::sleep(); // put driver in standby
           oled::clear(); // clear display to avoid burn-in
           breathingLed::breathe();
           nextState(STATE_SLEEP);
@@ -196,7 +195,7 @@ namespace fsm {
       case STATE_SLEEP:
         // wake up if user is pushing buttons or configuring 
         if (forwardButtonPressed() || backwardButtonPressed() || (steps_per_second != settings::forwardSpeed)) { 
-          digitalWrite(kStepperStandbyPin, HIGH); // wake up driver
+          tb6612::wakeup(); // wake up driver
           oled::print(steps_per_second); // wake up display
           breathingLed::off();
           nextState(STATE_IDLE);

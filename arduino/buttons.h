@@ -1,5 +1,3 @@
-/* Koen De Vleeschauwer 2019. */
-
 #ifndef BUTTONS_H
 #define BUTTONS_H 1
 

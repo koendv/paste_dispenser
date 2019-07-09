@@ -1,0 +1,52 @@
+#!/usr/bin/perl
+#
+# pre-calculate duty cycle values 
+#
+use Math::Trig;
+$STEPS=64; # up to 64 microsteps
+$SCALE=1023; # pwm goes from 0 to 1023
+$MAXTORQUE = 0; # choose between max torque (square phasor microstepping) and max smoothness (sine-cosine microstepping).
+$FREQ_CPU=16000000; # 16 MHz arduino frequency
+$PWMPERIOD=40; # 40 microseconds - 25 kHz
+
+print("idx\tOCR1A\tOCR1B\tSTEPPER\n");
+
+for ($i = 0; $i < $STEPS*4; $i++) {
+  $alpha = 2.0 * pi * $i / ($STEPS * 4); # angle
+  $sinalpha = sin($alpha);
+  $cosalpha = cos($alpha);
+
+  $pwma = abs($sinalpha);
+  $pwmb = abs($cosalpha);
+
+  # for max torque: scale biggest current is 1.0
+  if ($MAXTORQUE) {
+    if ($pwma  > $ pwmb) { $max = $pwma; } else { $max = $pwmb; }
+    $pwma = $pwma/$max;
+    $pwmb = $pwmb/$max;
+  }
+
+  $pwma = int($pwma * $SCALE + 0.5);
+  $pwmb = int($pwmb * $SCALE + 0.5);
+
+  # calculate the duty cycle for arduino Timer1. This gives values we can assign to OCR1A and OCR1B.
+  # From TimerOne.h: setPwmDuty()
+
+  $pwmperiod = $FREQ_CPU/2000000*$PWMPERIOD; # assume 25kHz PWM on a 16 MHz arduino.
+
+  $pwma_dutycycle = $pwma * $pwmperiod;
+  $pwma_dutycycle >>= 10;
+
+  $pwmb_dutycycle = $pwmb * $pwmperiod;
+  $pwmb_dutycycle >>= 10;
+
+  $stepper="";
+  if (($pwma_dutycycle > 0) && ($sinalpha > 0))  { $stepper.="AIN1|";}
+  if (($pwma_dutycycle > 0) && ($sinalpha < 0))  { $stepper.="AIN2|";}
+  if (($pwmb_dutycycle > 0) && ($cosalpha > 0))  { $stepper.="BIN1|";}
+  if (($pwmb_dutycycle > 0) && ($cosalpha < 0))  { $stepper.="BIN2|";}
+  $stepper=~s/\|$//g;
+
+  print ($i, "\t", $pwma_dutycycle, "\t", $pwmb_dutycycle, "\t", $stepper, "\n");
+  }
+print( "\n");

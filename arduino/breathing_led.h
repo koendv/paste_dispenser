@@ -1,5 +1,3 @@
-/* Koen De Vleeschauwer 2019. */
-
 /*
  * Breathing Led.
  * Provides simple led on/off, blinking and breathing. 

@@ -1,5 +1,3 @@
-/* Koen De Vleeschauwer 2019. */
-
 #ifndef LOOPS_H
 #define LOOPS_H 1
 /* 

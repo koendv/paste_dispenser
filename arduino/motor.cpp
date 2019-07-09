@@ -1,75 +1,56 @@
-#include "motor.h"
-
 #include <arduino.h>
-
-#include "motor_io.h"
+#include "motor.h"
+#include "tb6612.h"
 
 namespace motor {
-
-uint32_t steps = 0;
-
-static uint8_t step_counter = 0;
-
-static uint32_t last_step_micros = 0;
-static boolean is_forward = true;
-
-// If 0 indicates zero speed.
-static uint32_t step_time_micros = 0;
-
-bool isNonZeroSpeed() {
-  return step_time_micros != 0;
-}
-
-static void doStep() {
-  if (is_forward) {
-    step_counter++;
-  } else {
-    step_counter--;
-  }
-  last_step_micros = micros();
-  motor_io::setStep(step_counter);
-}
-
-void setup() {
-  motor_io::setup();
   
-  last_step_micros = micros(); 
-  motor_io::setStep(step_counter);
-}
+  uint16_t steps = 0; // step counter
+  static boolean is_forward = true; // rotation direction
+  static uint32_t next_step_micros = 0; // time of next step, in microseconds
+  static uint32_t step_time_micros = 0; // microseconds between steps. If 0 indicates zero speed.
 
-void loop() {
-  if (!step_time_micros) {
-    last_step_micros = micros();
-    return;
-  }
+  void setSpeed(uint16_t steps_per_sec, boolean forward) {
   
-  // TODO: cache the target time in micros?
-  if ((micros() - last_step_micros) >= step_time_micros) {
-    doStep();
-    steps++;
-  }
-}
-
-// 0 indicates stop.
-void setSpeed(uint16_t steps_per_sec, boolean forward) {
-  // Turn on the motor in case it was off.
-  motor_io::setStep(step_counter);
+    if (!steps_per_sec) {
+      step_time_micros = 0;
+      return;  
+    }
+    
+  //#define AUTO_GEAR_SHIFT
+  #ifdef AUTO_GEAR_SHIFT
+    /* 
+     *  Auto gear shift. Keeps load on processor more or less constant as microsteps double when speed halves.
+     *  This increases resolution at slow speeds. Tune for your stepper.
+     */
+    const uint16_t auto_gear_shift = 64;
+    uint16_t microsteps = 1;
+    if (steps_per_sec > auto_gear_shift) microsteps = 2;
+    else if (steps_per_sec > auto_gear_shift / 2) microsteps = 4;
+    else if (steps_per_sec > auto_gear_shift / 4) microsteps = 8;
+    else if (steps_per_sec > auto_gear_shift / 16) microsteps = 16;
+    else microsteps = 32;
+    tb6612::setMicrosteps(microsteps);
+    steps_per_sec *= microsteps;
+  #endif
   
-  if (!steps_per_sec) {
-    step_time_micros = 0;
+    step_time_micros = 1000000L / steps_per_sec;
     is_forward = forward;
-    return;  
-  }
-
-  step_time_micros = (1000000L / steps_per_sec);
-  is_forward = forward;
-}
-
-void sleep() {
-  step_time_micros = 0;
-  motor_io::sleep();
-}
-
+    next_step_micros = micros(); // now
+  } 
   
-}  // namespace motor
+  void setup() {
+    tb6612::setup();
+  }
+  
+  void loop() {
+    if (!step_time_micros)
+      return;
+    uint32_t now_micros = micros();
+    if (now_micros >= next_step_micros) {
+      tb6612::step(is_forward);
+      steps++;
+      next_step_micros = now_micros + step_time_micros; // set time of next step
+    }
+  }
+}
 // not truncated

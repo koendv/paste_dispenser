@@ -1,5 +1,3 @@
-/* Koen De Vleeschauwer 2019. */
-
 #ifndef PINS_H
 #define PINS_H 1
 #include <Arduino.h>
@@ -23,34 +21,8 @@
  */
 
 /*
- * Stepper standby. Set to 0 for stepper motor sleeping, 1 for stepper motor active.
+ * Stepper pins are defined in tb6612.cpp
  */
-
-static const uint8_t kStepperStandbyPin = 8;
-
-/* 
- *  The hardware for microstepping is there, but microstepping is not implemented yet.
- *  The stepper pwm pins are connected to Timer1.
- */
-
-static const uint8_t kStepperPwmAPin = 9;
-static const uint8_t kStepperPwmBPin = 10;
-
-/* the four wires of the stepper motor. 
- * All wires of the stepper are in one and the same port. (port C). 
- * This allows setting the values of the four wires writing one byte.
- * The definitions here are just for show, stepper pins are hardcoded in motor_io.cpp
- */
-
-// Stepper motor A1 (28byj-48: blue) wire.
-static const uint8_t kStepperA1Pin = A3;
-// Stepper motor A2 (28byj-48: pink) wire.
-static const uint8_t kStepperA2Pin = A2;
-// Stepper motor B1 (28byj-48: yellow) wire.
-static const uint8_t kStepperB1Pin = A1;
-// Stepper motor B2 (28byj-48: orange) wire.
-static const uint8_t kStepperB2Pin = A0;
-// When running a unipolar stepper from a bipolar driver ic, connect the common lead to ground.
 
 /* buttons
  * All buttons are in one and the same port. (port D). 
