@@ -21,7 +21,6 @@ void setup() {
   pinMode(kSlowButtonPin, INPUT_PULLUP);
 
   /* led */
-  pinMode(13, INPUT); // XXX
   pinMode(kLedPin, OUTPUT);
 
   motor::setup();
