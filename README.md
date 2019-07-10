@@ -64,7 +64,7 @@ The controller board has four headers:
  
 ## Practice makes perfect
 
-For practice fill a syringe with a small amount (approx. 1 ml) of toothpaste. Print a pcb at scale 1:1 in black and white on paper, [like this](https://github.com/koendv/paste_dispenser4zapta/raw/master/doc/toothpaste-practice.pdf), and practice depositing toothpaste until you are comfortable with the solder paste dispenser.
+For practice fill a syringe with a small amount (approx. 1 ml) of toothpaste. Print a pcb at scale 1:1 in black and white on paper and practice depositing toothpaste until you are comfortable with the solder paste dispenser.
 
 Before filling the syringe, run a nylon wire inside the syringe body. A small piece of fishing line is suitable. This nylon wire creates a small leak in the seal between plunger and syringe body, allowing the air to escape while you push the plunger down. Once the plunger is down, simply pull the nylon wire out and you can begin dispensing.
 
