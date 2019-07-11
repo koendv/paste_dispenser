@@ -2,11 +2,11 @@
 
 ![](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/paste_dispenser_front.png)
 
-This is a controller board for [solder paste dispensers](https://www.thingiverse.com/thing:1119914). The controller supports unipolar and bipolar stepper motors, a foot pedal switch, an OLED display, and a menu system. The board has been designed with easy soldering in mind.
+This is a controller board for [solder paste dispensers](https://www.thingiverse.com/thing:1119914). The controller supports unipolar and bipolar stepper motors, a foot pedal switch, an OLED display, a LED that blinks faster when the motor runs faster, and a menu system. The board has been designed with easy soldering in mind.
 
 ## Foot switch
 
-Dispensing can be initiated either by the *push* button on the dispenser, or by pushing a foot pedal switch. 
+Dispensing can be initiated either by pressing the *push* button on the dispenser, or by pushing down a foot pedal switch. 
 
 A foot pedal switch has the advantage that it frees up a hand. Using a foot switch is also more stable; when pushing a button on the dispenser itself the syringe always moves a little bit. 
 
@@ -20,11 +20,11 @@ The display shows the motor speed.
 
 The OLED display is a generic OLED module 0.91" diagonal, 128x32 pixel, I2C, SSD1306, as found on ebay, aliexpress and [others](https://www.google.com/search?q=OLED+module+0.91%22+128x32+I2C+SSD1306+price). Before buying, check the module has a 4-pin connection - GND, VCC, SDA, SCK - and uses a SSD1306 controller. The display *ought* not to touch any of the components below, but I put a bit of Kaptan tape on the back of the display, just to make sure.
 
-The board also has a LED which blinks faster when the motor runs faster.
+The OLED display is optional. If you choose not to install the OLED display you can still check stepper speed on the serial console.
 
 ## Menu
 
-There is a settings menu on the serial port. Access the menu using a vt100 ansi terminal emulation, e.g. [PuTTY](https://putty.org/) on Windows, or minicom on Linux. On Android, use an USB OTG adapter and *Serial USB Terminal*. The settings menu allows you to configure the solder paste dispenser. The menu looks like this:
+There is a settings menu on the serial port. Access the menu using a vt100 ansi terminal emulation, e.g. [PuTTY](https://putty.org/) on Windows, or *minicom* on Linux. On Android, use an USB OTG adapter and *Serial USB Terminal*. The settings menu allows you to configure forward and backward speed, pullback, and microstepping, and to store and recall these settings from non-volatile memory. The menu looks like this:
 
 	[f] Forward speed 125 steps/sec
 	[s] Forward steps 0 steps
@@ -37,21 +37,30 @@ There is a settings menu on the serial port. Access the menu using a vt100 ansi 
 	[w] Save profile
 	[h] Help
 
+### Speed
 Forward speed can be set using the *faster*/*slower* buttons on the dispenser itself or using the console menu. 
 
 If *forward steps* is zero, the syringe plunger is pushed down as long as you press the *push* button or the foot switch pedal. This is useful for making beads, and the normal setting when dispensing solder paste. If *forward steps* is non-zero, pushing the *forward* button or the foot switch moves the plunger down exactly the number of steps in the settings. This is useful for making precise, repeatable dots, e.g. as a glue or lubricating oil dispenser.
 
+Backward speed can only be set using the console menu.
+
+### Pullback
 Sometimes paste keeps oozing out after you stop dispensing. If *pullback steps* is non-zero, then after a *pullback delay* period of inactivity the plunger will move back *pullback steps*, to stop paste oozing out. How successful this is and how many steps the plunger needs to pull back to stop the oozing depends upon paste viscosity. *Pullback* works better with low viscosity liquids than with high viscosity paste.
 
-## Saved Profiles
+### Microstepping
+The controller supports up to 1/64 microstepping. This is open loop voltage control; choose speed and microstepping that goes well with your stepper motor. Default is half-stepping.
 
-Once you have found a setting which works, you can save it for later. Up to five profiles can be saved. These profiles are remembered even when the power is turned off. After power-up the last saved settings are used.
+### Saved Profiles
+
+Once you have found a setting that works, you can save it for later. Up to five profiles can be saved. These profiles are remembered even when the power is turned off. After power-up the last saved settings are used.
 
 ## Power supply
 
 Use a 5.0V 1A phone charger as power supply. The TB6612 stepper motor driver IC supports 5V 1.2A continuous, but can be damaged by higher currents. Using a power supply with a maximum current less than 1.2A protects the driver IC in case of short circuit or stall.
 
-The voltage range is 4.5V-5.5V. More than 5.5V is too much for the atmega328p microcontroller; less than 4.5V and the TB6612 stepper driver stops working.
+The voltage range is 4.5V to 5.5V. More than 5.5V is too much for the atmega328p microcontroller; less than 4.5V and the TB6612 stepper driver stops working.
+
+The board has a MOSFET for reverse polarity protection.
 
 ## Connecting everything
 
@@ -60,7 +69,7 @@ The controller board has four headers:
 * J1 is the ISP connector for downloading the initial firmware to the atmega microcontroller.
 * J2 connects to an USB to serial adapter (pins +5V, RX, TX, GND) and the footswitch (pins FTSW, GND).
 * J3 is the connector for the stepper motor. Both unipolar and bipolar steppers can be connected. Connect one coil to pins A1 and A2, and one coil to pins B1 and B2. Connect the center tap of unipolar steppers to pin GND.
-* J4 is the OLED display connector. 
+* J4 is the connector for the optional OLED display. Solder a 4-position female Dupont housing here.
  
 ## Practice makes perfect
 
@@ -70,7 +79,7 @@ Before filling the syringe, run a nylon wire inside the syringe body. A small pi
 
 ## Zapta
 
-The controller board is 40mm x 30mm, and fits on [zapta](https://www.thingiverse.com/thing:1119914) solder paste dispensers with a [28BYJ-48](https://www.adafruit.com/product/858) stepper. However, the controller is not restricted to any specific model of solder paste dispenser; if a syringe pump uses a 5- or 6-wire unipolar stepper or a 4-wire bipolar stepper motor, there's a reasonable chance this will work. Just check the stepper works at 5V and current stays below 1.2 amps.
+The controller board is 40mm x 30mm, and fits on [zapta](https://www.thingiverse.com/thing:1119914) solder paste dispensers with a [28BYJ-48](https://www.adafruit.com/product/858) stepper. However, the controller is not restricted to any specific model of solder paste dispenser; if a syringe pump uses a 5- or 6-wire unipolar or a 4-wire bipolar stepper motor, there's a reasonable chance this will work. Just check the stepper works at 5V and current stays below 1.2 amps.
 
 ## Firmware
 
@@ -140,11 +149,11 @@ where `/dev/cu.usbmodem1d11` is the usb port of your Arduino Uno (On linux proba
     
     avrdude done.  Thank you.
 
-This finishes writing bootloader and sketch to the solder paste dispenser. You can now disconnect the Arduino Uno. As the atmega328p now contains a bootloader you can now also upload sketches using the solder paste dispenser serial port.
+This finishes writing bootloader and sketch to the solder paste dispenser. Disconnect the Arduino Uno. As the atmega328p now contains a bootloader sketches can now be uploaded using the solder paste dispenser serial port.
 
 ## Making your own
 
-The github contains arduino source and kicad pcb design files. You'll find the [schematic](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_schematic.pdf), the [board layout](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_board.pdf), and the [bill of materials](https://github.com/koendv/paste_dispenser4zapta/blob/master/kicad/paste_dispenser/paste_dispenser.csv). This is a link to the pcb as an orderable [shared project at oshpark](http://www.oshpark.com/shared_projects/V5txbi41), and these are the components as a [shared project at Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=61ff8d7d43).
+The github contains arduino source and kicad pcb design files. You'll find the [schematic](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_schematic.pdf), the [board layout](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_board.pdf), and the [bill of materials](https://github.com/koendv/paste_dispenser4zapta/blob/master/kicad/paste_dispenser/paste_dispenser.csv). This is a link to the pcb as an orderable [shared project at oshpark](http://www.oshpark.com/shared_projects/V5txbi41), and these are the components as a [shared project at Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=61ff8d7d43). Here are [zipped gerbers](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/gerbers.zip) for pcb manufacturing at [jlcpcb](https://jlcpcb.com/). 
 
 If you prefer not to solder you can also build the controller on a breadboard, as in this [fritzing sketch](https://github.com/koendv/paste_dispenser4zapta/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V Arduino Pro Mini and a TB6612 breakout module.
 
