@@ -56,7 +56,7 @@ Once you have found a setting that works, you can save it for later. Up to five 
 
 ## Power supply
 
-Use a 5.0V 1A phone charger as power supply. The TB6612 stepper motor driver IC supports 5V 1.2A continuous, but can be damaged by higher currents. Using a power supply with a maximum current less than 1.2A protects the driver IC in case of short circuit or stall.
+If you want to play it safe, use a 5.0V 1A phone charger as power supply. The TB6612 stepper motor driver IC supports 5V 1.2A continuous, but can be damaged by higher currents. Using a power supply with a maximum current less than 1.2A protects the driver IC in case of short circuit or stall.
 
 The voltage range is 4.5V to 5.5V. More than 5.5V is too much for the atmega328p microcontroller; less than 4.5V and the TB6612 stepper driver stops working.
 
@@ -67,7 +67,7 @@ The board has a MOSFET for reverse polarity protection.
 The controller board has four headers:
 
 * J1 is the ISP connector for downloading the initial firmware to the atmega microcontroller.
-* J2 connects to an USB to serial adapter (pins +5V, RX, TX, GND) and the footswitch (pins FTSW, GND).
+* J2 connects to an USB to serial adapter (pins +5V, RX, TX, GND) and the footswitch (pins FTSW, GND). The footswitch is optional, but very handy.
 * J3 is the connector for the stepper motor. Both unipolar and bipolar steppers can be connected. Connect one coil to pins A1 and A2, and one coil to pins B1 and B2. Connect the center tap of unipolar steppers to pin GND.
 * J4 is the connector for the optional OLED display. Solder a 4-position female Dupont housing here.
  
@@ -149,7 +149,7 @@ where `/dev/cu.usbmodem1d11` is the usb port of your Arduino Uno (On linux proba
     
     avrdude done.  Thank you.
 
-This finishes writing bootloader and sketch to the solder paste dispenser. Disconnect the Arduino Uno. As the atmega328p now contains a bootloader sketches can now be uploaded using the solder paste dispenser serial port.
+This finishes writing bootloader and sketch to the solder paste dispenser. Disconnect the Arduino Uno. The atmega328p now contains a bootloader. Sketches can now be uploaded using the solder paste dispenser serial port.
 
 ## Making your own
 

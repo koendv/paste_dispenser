@@ -193,8 +193,8 @@ namespace fsm {
         }
         break;  
       case STATE_SLEEP:
-        // wake up if user is pushing buttons or configuring 
-        if (forwardButtonPressed() || backwardButtonPressed() || (steps_per_second != settings::forwardSpeed)) { 
+        // wake up if user is pushing buttons or configuring using the serial console
+        if (forwardButtonPressed() || backwardButtonPressed() || buttons::isPressed[kSlowButtonPin] || buttons::isPressed[kFastButtonPin] || (steps_per_second != settings::forwardSpeed)) {
           tb6612::wakeup(); // wake up driver
           oled::print(steps_per_second); // wake up display
           breathingLed::off();
