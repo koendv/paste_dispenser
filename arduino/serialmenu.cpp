@@ -50,7 +50,7 @@ namespace settings {
   const static char backwardSpeedHelp[] PROGMEM = "speed when backward button pressed.";
   const static char pullbackDelayHelp[] PROGMEM = "time to wait after forward motion before pulling back.";
   const static char pullbackStepsHelp[] PROGMEM = "number of steps to pull back. if 0 don't pull back.";
-  const static char microStepsHelp[] PROGMEM = "microsteps per full step. valid values are 1, 2, 4, 5, 16, 32, 64.";
+  const static char microStepsHelp[] PROGMEM = "microsteps per full step. valid values 1, 2, 4, 5, 16, 32, 64.";
   const static char profileNumberHelp[] PROGMEM = "active profile";
   const static char readConfigHelp[] PROGMEM = "revert to saved";
   const static char writeConfigHelp[] PROGMEM = "save to non-volatile memory";

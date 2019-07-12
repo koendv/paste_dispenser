@@ -37,6 +37,8 @@ There is a settings menu on the serial port. Access the menu using a vt100 ansi 
 	[w] Save profile
 	[h] Help
 
+The settings menu runs at 115200, 8N1.
+
 ### Speed
 Forward speed can be set using the *faster*/*slower* buttons on the dispenser itself or using the console menu. 
 
