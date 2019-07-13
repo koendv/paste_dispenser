@@ -13,7 +13,7 @@
 #include "tb6612.h"
 #include "settings.h"
 
-// for maximum torque (square phasor microstepping) define MAXTORQUE 1. for maximum smoothness (sine-cosine microstepping), undefine MAXTORQUE.
+// for maximum torque (square path microstepping) define MAXTORQUE 1. for maximum smoothness (sine-cosine microstepping), undefine MAXTORQUE.
 
 #define MAXTORQUE 1
 

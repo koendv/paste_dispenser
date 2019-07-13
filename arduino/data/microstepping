@@ -5,7 +5,7 @@
 use Math::Trig;
 $STEPS=64; # up to 64 microsteps
 $SCALE=1023; # pwm goes from 0 to 1023
-$MAXTORQUE = 0; # choose between max torque (square phasor microstepping) and max smoothness (sine-cosine microstepping).
+$MAXTORQUE = 0; # choose between max torque (square path microstepping) and max smoothness (sine-cosine microstepping).
 $FREQ_CPU=16000000; # 16 MHz arduino frequency
 $PWMPERIOD=40; # 40 microseconds - 25 kHz
 
