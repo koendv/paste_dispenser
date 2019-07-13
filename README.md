@@ -24,7 +24,7 @@ The OLED display is optional. If you choose not to install the OLED display you 
 
 ## Menu
 
-There is a settings menu on the serial port. Access the menu using a vt100 ansi terminal emulation, e.g. [PuTTY](https://putty.org/) on Windows, or *minicom* on Linux. On Android, use an USB OTG adapter and *Serial USB Terminal*. The settings menu allows you to configure forward and backward speed, pullback, and microstepping, and to store and recall these settings from non-volatile memory. The menu looks like this:
+There is a settings menu on the serial port. The serial port runs at 115200, 8N1. Access the menu using a vt100 ansi terminal emulation, e.g. [PuTTY](https://putty.org/) on Windows, or *minicom* on Linux. On Android, use an USB OTG adapter and *Serial USB Terminal*. The settings menu allows you to configure forward and backward speed, pullback, and microstepping, and to store and recall these settings from non-volatile memory. The menu looks like this:
 
 	[f] Forward speed 125 steps/sec
 	[s] Forward steps 0 steps
@@ -37,8 +37,6 @@ There is a settings menu on the serial port. Access the menu using a vt100 ansi 
 	[w] Save profile
 	[h] Help
 
-The settings menu runs at 115200, 8N1.
-
 ### Speed
 Forward speed can be set using the *faster*/*slower* buttons on the dispenser itself or using the console menu. 
 
@@ -50,7 +48,8 @@ Backward speed can only be set using the console menu.
 Sometimes paste keeps oozing out after you stop dispensing. If *pullback steps* is non-zero, then after a *pullback delay* period of inactivity the plunger will move back *pullback steps*, to stop paste oozing out. How successful this is and how many steps the plunger needs to pull back to stop the oozing depends upon paste viscosity. *Pullback* works better with low viscosity liquids than with high viscosity paste.
 
 ### Microstepping
-The controller supports up to 1/64 microstepping. This is open loop voltage control; choose speed and microstepping that goes well with your stepper motor. Default is half-stepping.
+The controller supports up to 1/64 microstepping. This is open loop voltage control microstepping.
+Choose speed and microstepping that goes well with your stepper motor. Default is half-stepping.
 
 ### Saved Profiles
 
@@ -90,7 +89,7 @@ The solder paste dispenser is an arduino system and can be programmed using the 
 There is no capacitor between DTR and reset. This avoids spurious resets when connecting to the serial port. But this also means that if you want to develop firmware for this board there is no automatic reset before uploading. Three options: 
 
 * Upload firmware using the ISP connector. This has to be done at least once, to upload the bootloader.
-* Use the serial port to upload. Just before uploading briefly connect RST and ground - they are next to each other on the ISP connector. 
+* Use the serial port to upload. This is what I usually do. Before uploading connect RST and ground with a Dupont jumper wire. RST and ground are next to each other on the ISP connector. In the Arduino IDE, click Sketch -> Upload, count to three and remove the jumper wire. 
 * When developing connect a 100n capacitor between serial adapter DTR and ISP connector RST pin. This allows the IDE to reset the microcontroller automatically just before uploading using the serial port.
 
 ## Compiling
