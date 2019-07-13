@@ -66,6 +66,7 @@ namespace settings {
     pullbackDelay = constrain(pullbackDelay, 0, kMaxPullbackDelay);
     pullbackSteps = constrain(pullbackSteps, 0, kMaxSteps);
     microSteps = constrain(microSteps, 1, kMaxMicrosteps);
+    if ((microSteps != 1) && (microSteps != 2) && (microSteps != 4) && (microSteps != 8) && (microSteps != 16) && (microSteps != 32)  && (microSteps != 64)) microSteps = 2; // valid values for microstepping
     return;
   }
 
