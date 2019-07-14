@@ -19,8 +19,9 @@ namespace motor {
   //#define AUTO_GEAR_SHIFT
   #ifdef AUTO_GEAR_SHIFT
     /* 
-     *  Auto gear shift. Keeps load on processor more or less constant as microsteps double when speed halves.
-     *  This increases resolution at slow speeds. Tune for your stepper.
+     *  Auto gear shift. Doubles microstepping when speed halves.
+     *  This increases resolution at slow speeds, and limits the load on the processor at high speeds.
+     *  Needs to be tuned for every stepper used.
      */
     const uint16_t auto_gear_shift = 64;
     uint16_t microsteps = 1;
@@ -29,7 +30,7 @@ namespace motor {
     else if (steps_per_sec > auto_gear_shift / 4) microsteps = 8;
     else if (steps_per_sec > auto_gear_shift / 16) microsteps = 16;
     else microsteps = 32;
-    tb6612::setMicrosteps(microsteps);
+    tb6612::setMicrosteps(microsteps); // disregard microsteps setting
     steps_per_sec *= microsteps;
   #endif
   

@@ -102,7 +102,7 @@ namespace settings {
       for (uint8_t i=0; i <= kMaxProfile; i++) {
         storedProfile.forwardSpeed[i] = kDefaultSpeed;
         storedProfile.forwardSteps[i] = 0;
-        storedProfile.backwardSpeed[i] = kMaxSpeed;
+        storedProfile.backwardSpeed[i] = kDefaultSpeed;
         storedProfile.pullbackDelay[i] = 0;
         storedProfile.pullbackSteps[i] = 0;
         storedProfile.microSteps[i] = kDefaultMicrosteps;

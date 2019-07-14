@@ -4,8 +4,8 @@
 namespace settings {
 
   static const uint8_t kMaxProfile = 4; // 5 profiles, numbered 0..4
-  static const uint16_t kMaxSpeed = 500;
-  static const uint16_t kDefaultSpeed = 125;
+  static const uint16_t kMaxSpeed = 800;
+  static const uint16_t kDefaultSpeed = 300;
   static const uint16_t kMaxPullbackDelay = 10000;
   static const uint16_t kMaxSteps = 10000;
   static const uint16_t kMaxMicrosteps = 64;
