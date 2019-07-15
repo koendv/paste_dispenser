@@ -63,7 +63,7 @@ namespace fsm {
 
     // have led blink faster when motor runs faster
     const uint16_t steps_to_led_ratio = settings::kMaxSpeed / 250;
-    uint16_t led_period_millis = 500 - steps_per_second / steps_to_led_ratio; // faster than and same as map(steps_per_second, 0, kMaxSpeed, 500, 250);
+    uint16_t led_period_millis = 500 - steps_per_second / steps_to_led_ratio; // faster than map(steps_per_second, 0, settings::kMaxSpeed, 500, 250);
     led_period_millis = constrain(led_period_millis, 100, 1000); // constrain to reasonable values
     breathingLed::blink(64, led_period_millis); // blink led
 
