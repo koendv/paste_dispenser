@@ -8,7 +8,7 @@ This is a controller board for [solder paste dispensers](https://www.thingiverse
 
 Dispensing can be initiated either by pressing the *push* button on the dispenser, or by pushing down a foot pedal switch. 
 
-A foot pedal switch has the advantage that it frees up a hand. Using a foot switch is also more stable; when pushing a button on the dispenser itself the syringe always moves a little bit. 
+A foot pedal switch has the advantage that it frees up a hand. Using a foot switch is also more stable; pushing a button on the solder dispenser always moves the syringe tip a little bit.
 
 Suitable foot pedals are [Adafruit product ID 423](https://www.adafruit.com/product/423) and [Sparkfun COM-11192](https://www.sparkfun.com/products/11192), and their equivalents at ebay and aliexpress.
 
@@ -18,7 +18,7 @@ These foot pedal switches are simple on/off switches, normally open. Speed contr
 
 The display shows the motor speed. 
 
-The OLED display is a generic OLED module 0.91" diagonal, 128x32 pixel, I2C, SSD1306, as found on ebay, aliexpress and [others](https://www.google.com/search?q=OLED+module+0.91%22+128x32+I2C+SSD1306+price). Before buying, check the module has a 4-pin connection - GND, VCC, SDA, SCK - and uses a SSD1306 controller. The display *ought* not to touch any of the components below, but I put a bit of Kaptan tape on the back of the display, just to make sure.
+The OLED display is a generic OLED module 0.91" diagonal, 128x32 pixel, I2C, SSD1306, as found on ebay, aliexpress and [others](https://www.google.com/search?q=OLED+module+0.91%22+128x32+I2C+SSD1306+price). Before buying, check the module has a 4-pin connection - GND, VCC, SDA, SCK - and uses a SSD1306 controller. The display *ought* not to touch any of the components below, but you can put a bit of Kaptan tape on the back of the display, just to make sure.
 
 The OLED display is optional. If you choose not to install the OLED display you can still check stepper speed on the serial console.
 
@@ -49,7 +49,7 @@ Sometimes paste keeps oozing out after you stop dispensing. If *pullback steps* 
 
 ### Microstepping
 The controller supports up to 1/64 microstepping. This is open loop voltage control microstepping.
-Choose speed and microstepping that goes well with your stepper motor. Default is half-stepping.
+Choose speed and microstepping that goes well with your stepper motor. This may take a bit of trial and error. Default is half-stepping.
 
 ### Saved Profiles
 
