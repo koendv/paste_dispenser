@@ -1,0 +1,23 @@
+10ml_syringe.scad	10ml BD "Luer Lok" syringe
+5ml_chipquik.scad	5ml "Chip Quik" solder paste syringe
+FILES			This file
+README.md		Readme for github
+anti-rotation.scad	Secures leadscrew so it doesn't spin freely
+assembly.scad		Assembly drawing
+body.scad		Body where motor, controller pcb, and syringe are mounted.
+generate.scad		OpenScad script to generate stl
+generate.sh		shell script to generate stl
+haydon-25000.scad	Haydon-Kerk 25000 series non-captive linear stepper
+haydon-37000.scad	Haydon-Kerk 37000 series non-captive linear stepper
+motor.scad		Model of non-captive linear stepper, for assembly drawing
+param.scad		Design parameters
+pcb.scad		Stepper controller pcb with through-hole pins
+plunger.scad		Syringe plunger
+robotdigg-35-byz.scad	Robotdigg 35mm non-captive linear stepper
+syringe.scad		Model of syringe, for assembly drawing
+util.scad		OpenSCAD utilities
+doc/haydon_25343-05.pdf	Haydon-Kerk 25000 series non-captive linear stepper
+doc/haydon_37841-05.pdf	Haydon-Kerk 37000 series non-captive linear stepper
+doc/robotdigg-25BYZ-GT-35-1.22.jpeg	Robotdigg 25mm non-captive linear stepper
+doc/robotdigg-35-BYZ.jpeg	Robotdigg 35mm non-captive linear stepper
+doc/syringe.csv		Size of various syringes

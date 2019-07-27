@@ -1,0 +1,10 @@
+Syringe,Size ml,Internal Diameter,External Diameter,Barrel Empty Length,Barrel Length,Flange Diameter,Flange Thickness,Plunger Diameter,Plunger Thickness,Plunger Neck
+3ml BD,3,8.5,10.4,78.1,90.6,24.4,1.9,12.5,1.4,4.4
+5ml BD,5,11.8,13.8,74.8,86.8,27.1,1.8,15.7,1.7,6
+10ml BD,10,14.4,16.2,95.2,106,28,1.9,18.7,1.6,7.5
+20ml BD,20,18.8,21.9,107.6,121.4,38.6,2.5,23.8,1.6,10.5
+35ml monoject,35,23,26.2,113.4,125,34.8,1.7,29.3,1.9,16.3
+60ml BD,60,26.3,29.5,147,162.1,49.9,1.9,31,1.9,13.1
+,,,,,,,,,,
+Dimensions in mm,,,,,,,,,,
+https://sites.google.com/site/bioprinterwiki/_/rsrc/1497421536633/so-you-want-to-build-your-own-bioprinter/diy-bioprinter/diy-syringe-pump/syringe-specs/,,,,,,,,,,
