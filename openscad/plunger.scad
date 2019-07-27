@@ -35,8 +35,23 @@ module plunger_body() {
        
     translate([0, 0, plunger_h4])  
     cylinder(d = plunger_dia3, h = plunger_h3 + eps1);
+        
+    chamfer = clearance_fit;
     
-    chamfered_cylinder(d = plunger_dia4, h = plunger_h4 + eps1, chamfer = 1);
+    // chamfer where piston meets shaft
+    translate([0, 0, plunger_h4])
+    cylinder(d1 = plunger_dia3 + chamfer, d2 = plunger_dia3, h = chamfer/2);
+    
+    // chamfer at top of piston
+    translate([0, 0, plunger_h4 - chamfer/2])
+    cylinder(d1 = plunger_dia4, d2 = plunger_dia4 - chamfer, h = chamfer/2);
+    
+    // chamfer at piston bottom
+    translate([0, 0, chamfer/2])
+    cylinder(d = plunger_dia4, h = plunger_h4 - chamfer);
+
+    // rest of piston
+    cylinder(d1 = plunger_dia4 - chamfer, d2 = plunger_dia4, h = chamfer/2);
 }
 
 // distance between tip of leadscrew and plunger tip
