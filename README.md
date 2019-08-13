@@ -160,9 +160,19 @@ The openscad/ directory contains the .stl files for 3d-printing the mechanical p
 
 If you prefer not to solder you can also build the controller on a breadboard, as in this [fritzing sketch](https://github.com/koendv/paste_dispenser4zapta/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V Arduino Pro Mini and a TB6612 breakout module.
 
+## Care
+
+* There are a few situations which may result in breakage.
+If the piston pushes against the bottom of an empty syringe, something has to give.
+Likewise, if you try to squeeze paste out of a stoppered syringe. 
+In general, avoid "unstoppable force meets inmovable object" situations. Something will break - the motor may tear itself off its mounts, for instance.
+
+* When not in use, loosen the syringe holder screws so the syringe isn't under constant pressure.
+
 ## Notes
 
 * The kicad pcb hardware design is under Creative Commons - Attribution Share Alike license.
 
 * A solder paste dispenser is a small motor which pushes the plunger of a syringe. You can use it for solder paste, but it can also be used as a syringe pump, to create small dots of glue in a precise and repeatable way, or to put small drops of lubricating oil on a mechanism.
+
   

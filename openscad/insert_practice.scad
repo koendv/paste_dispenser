@@ -14,11 +14,7 @@ eps2 = 2*eps1;
 // h is the total depth for the screw hole. Already includes an 
 // extra eps1 at the opening side.
 module m4_threaded_insert(h) {
-  // Adding tweaks for compensate for my printer's tolerace.
-  A = 5.3 + 0.3;
-  B = 5.94 + 0.4;
-  L = 7.9;
-  D = 5.0;
+  include <m4_threaded_insert.scad>;
   translate([0, 0, -eps1]) {
     // NOTE: diameter are compensated to actual print results.
     // May vary among printers.
