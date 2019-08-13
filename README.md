@@ -156,7 +156,7 @@ This finishes writing bootloader and sketch to the solder paste dispenser. Disco
 
 The github contains arduino source and kicad pcb design files. You'll find the [schematic](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_schematic.pdf), the [board layout](https://github.com/koendv/paste_dispenser4zapta/raw/master/kicad/paste_dispenser/paste_dispenser_board.pdf), and the [bill of materials](https://github.com/koendv/paste_dispenser4zapta/blob/master/kicad/paste_dispenser/paste_dispenser.csv). This is a link to the pcb as an orderable [shared project at oshpark](http://www.oshpark.com/shared_projects/V5txbi41), and these are the components as a [shared project at Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=61ff8d7d43). Here are [zipped gerbers](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/gerbers.zip) for pcb manufacturing at [jlcpcb](https://jlcpcb.com/). 
 
-The openscad/ directory contains the .stl files for 3d-printing the mechanical part of the solder paste dispenser. 
+The [openscad/](https://github.com/koendv/paste_dispenser/tree/master/openscad) directory contains the .stl files for 3d-printing the mechanical part of the solder paste dispenser. 
 
 If you prefer not to solder you can also build the controller on a breadboard, as in this [fritzing sketch](https://github.com/koendv/paste_dispenser4zapta/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V Arduino Pro Mini and a TB6612 breakout module.
 
