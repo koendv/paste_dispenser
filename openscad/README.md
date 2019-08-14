@@ -12,7 +12,7 @@ These parts have been designed with [openscad](http://www.openscad.org), a progr
 
 This build requires 5 M4 threaded inserts, type *IUB-M4-2*. You push these [heat-set inserts](https://www.lulzbot.com/learn/tutorials/heat-set-inserts-tips-and-tricks) in with a hot soldering iron (approx. 200 &deg;C). You may want to practice on [insert_practice.stl](https://github.com/koendv/paste_dispenser/blob/master/openscad/mcmaster-94180A353/insert_practice.stl) first.
 
-The file m4_threaded_insert.scad allows you to choose between [McMaster-Carr 94180a353](https://www.mcmaster.com/94180a353) (McMaster, US) and [Aerzetix C19143](https://www.amazon.co.uk/dp/B075XHV3GH/) (Amazon, Europe) inserts. Before generating .stl files in [openscad](http://www.openscad.org), edit m4_threaded_insert.scad and uncomment the threaded insert used. Alternatively, add your own. With a caliper measure the dimensions in the picture above, add slack for the printing process, and add the dimensions of the heat-set insert to m4_threaded_insert.scad.
+The file m4_threaded_insert.scad allows you to choose between [McMaster-Carr 94180a353](https://www.mcmaster.com/94180a353) (McMaster, US) and [Aerzetix C19143](https://www.amazon.co.uk/dp/B075XHV3GH/) (Amazon, Europe) inserts. Before generating .stl files in [openscad](http://www.openscad.org), edit m4_threaded_insert.scad and uncomment the threaded insert used. Alternatively, add your own. Take a heat-set insert. With a caliper measure the dimensions of the heat-set insert, as in the picture above. Add slack for the printing process, and add the heat-set insert to m4_threaded_insert.scad.
 
 
 
