@@ -5,7 +5,7 @@
 #ifndef OLED_H
 #define OLED_H
 
-#include <arduino.h>
+#include <Arduino.h>
 
 namespace oled {
 

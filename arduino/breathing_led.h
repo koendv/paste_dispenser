@@ -7,7 +7,7 @@
 #ifndef BREATHING_LED_H
 #define BREATHING_LED_H
 
-#include <arduino.h>
+#include <Arduino.h>
 
 namespace breathingLed {
 

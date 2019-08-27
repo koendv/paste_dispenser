@@ -1,4 +1,4 @@
-#include <arduino.h>
+#include <Arduino.h>
 #include "settings.h"
 #include "tb6612.h"
 

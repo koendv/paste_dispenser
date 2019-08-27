@@ -1,7 +1,7 @@
 #ifndef TB6612_H
 #define TB6612_H
 
-#include <arduino.h>
+#include <Arduino.h>
 
 namespace tb6612 {
   static const uint8_t kMaxMicrosteps = 64;

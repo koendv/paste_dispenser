@@ -1,4 +1,4 @@
-#include <arduino.h>
+#include <Arduino.h>
 #include <EEPROMWearLevel.h>
 #include "pins.h"
 #include "buttons.h"
