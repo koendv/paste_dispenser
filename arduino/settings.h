@@ -20,7 +20,7 @@ namespace settings {
   extern uint16_t microSteps; // microsteps per full step. valid values are 1, 2, 4, 5, 16, 32, 64.
 
   void writeConfig(); // writes current profile and profile number to eeprom.
-  void readConfig(bool restoreProfileNumber = false); // reads profile from eeprom. Optionally restores profile number (used at startup)
+  void readConfig(); // reads profile and profile number from eeprom.
   void readchar(); // read one character from the serial port
   
   extern void setup();

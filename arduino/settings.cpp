@@ -25,6 +25,7 @@ namespace settings {
   static const uint8_t BUTTON_SLOW = 2;  // "slow" button pressed. Decrease speed.
 
   static uint8_t button_state = BUTTON_IDLE;
+  static bool restoreProfileNumber = true; // restore profileNumber at startup
 
   /*
    * active profile
@@ -92,7 +93,7 @@ namespace settings {
 
   // restoreProfileNumber = false:  read profile only, keep profileNumber unchanged
   // restoreProfileNumber = true: read both profile and profileNumber 
-  void readConfig(bool restoreProfileNumber = false) {
+  void readConfig() {
     profile storedProfile;
     uint16_t storedProfileNumber;
     EEPROMwl.get(EEPROM_INDEX_STORED_PROFILE, storedProfile);
@@ -110,7 +111,11 @@ namespace settings {
       Serial.println(F("eeprom init"));
       EEPROMwl.put(EEPROM_INDEX_STORED_PROFILE, storedProfile);
     }
-    if (restoreProfileNumber) profileNumber = storedProfile.profileNumber;
+    if (restoreProfileNumber) {
+      // restore profileNumber at startup
+      profileNumber = storedProfile.profileNumber;
+      restoreProfileNumber = false;
+    }
     profileNumber = constrain(profileNumber, 0, kMaxProfile); // make certain profile number sane
     forwardSpeed = storedProfile.forwardSpeed[profileNumber];
     forwardSteps = storedProfile.forwardSteps[profileNumber];
@@ -142,7 +147,7 @@ namespace settings {
   void setup (){
     profile storedProfile;
     EEPROMwl.begin(EEPROM_LAYOUT_VERSION, EEPROM_INDEXES);
-    readConfig(true); // read profile and profileNumber
+    readConfig(); // read profile and profileNumber
     
   }
 

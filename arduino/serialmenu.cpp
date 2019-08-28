@@ -18,7 +18,7 @@ namespace settings {
   static const uint8_t KEY_LEFT = 253;
   static const uint8_t KEY_RIGHT = 254;
 
-  void serialPrintProgmem(char * progmemStr);
+  void serialPrintProgmem(const char * progmemStr);
   void printHelp();
   void printMenu();
    
@@ -343,7 +343,7 @@ namespace settings {
   /*
    * print a string stored in progmem (flash).
    */
-   void serialPrintProgmem(char * progmemStr) {
+   void serialPrintProgmem(const char * progmemStr) {
     char ch;
     while(ch = pgm_read_byte(progmemStr)){
       Serial.print(ch);
