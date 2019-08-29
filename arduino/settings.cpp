@@ -145,10 +145,8 @@ namespace settings {
   }
 
   void setup (){
-    profile storedProfile;
     EEPROMwl.begin(EEPROM_LAYOUT_VERSION, EEPROM_INDEXES);
-    readConfig(); // read profile and profileNumber
-    
+    readConfig(); // read profile and profileNumber  
   }
 
   static long lastPressedMillis = 0;
