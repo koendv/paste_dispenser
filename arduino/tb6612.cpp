@@ -146,7 +146,7 @@ namespace tb6612 {
   
     // initialize position
     idx = 0;
-    setMicrosteps(settings::microSteps); // default is half-stepping
+    setMicrosteps(settings::kDefaultMicrosteps); // default is half-stepping
     setOutputPins();
 
     // initialize standby pin
