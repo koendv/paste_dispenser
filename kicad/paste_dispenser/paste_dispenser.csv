@@ -9,9 +9,9 @@ Comment 3,,,,,,,,,,,
 Comment 4,,,,,,,,,,,
 Total Parts,24,,,,,,,,,,
 Total Unique Parts,16,,,,,,,,,,
-
-
-
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
 Ref,Qty,Value,Footprint,Manufacturer,Manufacturer Part No,,Source 1,Source 1 Part No,Source 2,Source 2 Part No,Note
 C2 C3 C6 C4 ,4,100n,Capacitor_SMD:C_0805_2012Metric,Yageo,CC805KRX7R7BB104,,mouser.com,603-CC805KRX7R7BB104, , , 
 C1 ,1,10u,Capacitor_SMD:C_0805_2012Metric,Yageo,CC805KKX5R7BB106,,mouser.com,603-CC805KKX5R7BB106, , , 
@@ -21,7 +21,7 @@ FID1 FID2 FID3 ,3,Fiducial,Fiducial:Fiducial_1mm_Dia_2.54mm_Outer_CopperTop, , ,
 J1 ,1,ISP,Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical,Adafruit,2822,,mouser.com,485-2822, , ,2x20 breakaway header  break off 2x03 strip
 J4 ,1,OLED,Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical,Harwin,M20-7820442,,mouser.com,855-M20-7820442, , , 
 J3 ,1,STEPPER,Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical,-,DNP,, , , , , 
-J2 ,1,EXT,Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical,TE,5-102203-3,,mouser.com,571-5-102203-3, , ,Mates with Dupont connectors
+J2 ,1,EXT,Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical,Harwin,M20-9750642,,mouser.com,855-M20-9750642, , ,Mates with Dupont connectors
 Q1 ,1,SSM3J328R_LF,Package_TO_SOT_SMD:SOT-23,Toshiba,SSM3J328R LF ,,mouser.com,757-SSM3J328RLF, , , 
 R1 ,1,10k,Resistor_SMD:R_0805_2012Metric,Yageo,AC0805FR-0710KL,,mouser.com,603-AC0805FR-0710KL, , , 
 R2 ,1,1k6,Resistor_SMD:R_0805_2012Metric,Yageo,AC0805FR-071K6L,,mouser.com,603-AC0805FR-071K6L, , , 
@@ -29,18 +29,18 @@ SW2 SW1 SW3 SW4 ,4,SW_PB,Button_Switch_THT:SW_PUSH_6mm,Omron,B3F-1000,,mouser.co
 U1 ,1,ATmega328P-AU,Package_QFP:TQFP-32_7x7mm_P0.8mm,Microchip,ATMEGA328P-AU,,mouser.com,556-ATMEGA328P-AU, , , 
 U2 ,1,TB6612FNG_C_8_EL,digikey-footprints:LSSOP-24_W5.6mm,Toshiba Semiconductor and Storage,TB6612FNG C 8 EL,,mouser.com,757-TB6612FNGC8EL,digikey.com,TB6612FNGC8ELCT-ND, 
 Y1 ,1,16MHz,Crystal:Resonator_SMD_muRata_CSTxExxV-3Pin_3.0x1.1mm_HandSoldering,Murata,CSTNE16M0V530000R,,mouser.com,81-CSTNE16M0V530000R, , , 
-
-
-
-
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
 BOM made with KICAD_BOM_WIZARD (https://github.com/HashDefineElectronics/KiCad_BOM_Wizard.git),,,,,,,,,,,
 Generated Sun 30 Jun 2019 08:40:43 AM CEST,,,,,,,,,,,
-
+,,,,,,,,,,,
 Additionally the following items:,,,,,,,,,,,
 ,1,,"OLED module, 0.91"", 128x32, I2C, SSD1306",,,,ebay.com,,aliexpress.com,,"Check module has a 4-pin connection: GND, VCC, SDA, SCK and uses SSD1306 controller."
 ,1,,"Footswitch, normally open, dry contact",Adafruit,423,,mouser.com,485-423,aliexpress.com,,These foot pedals are simple on/off switches. Speed controller foot pedals with a potentiometer will not work.
 ,,,_OR_,,,,,,,,
 ,1,,"Footswitch, normally open, dry contact",Sparkfun,COM-11192,,mouser.com,474-COM-11192,aliexpress.com,,Footswitches: choose one.
 ,1,,usb to 5V TTL serial converter,,,,ebay.com,FTDI FT232RL USB to 5V TTL Serial,aliexpress.com,,For the serial console.
-
+,,,,,,,,,,,
 not truncated,,,,,,,,,,,
