@@ -104,47 +104,21 @@ VCC|Uno 5V|2
 GND|Uno GND|6
 
 Find `avrdude` in your Arduino IDE directories, change to the appropriate directory and do the following incantation:
-`./bin/avrdude -C ./etc/avrdude.conf  -p m328p -P /dev/cu.usbmodem1d11 -c avrisp -b 19200 -U flash:w:/Users/koen/Documents/Arduino/paste_injector/arduino/arduino.ino.with_bootloader.eightanaloginputs.hex`
-where `/dev/cu.usbmodem1d11` is the usb port of your Arduino Uno (On linux probably `/dev/ttyACM0`). Flashing should take about 20 seconds, and ends with "`xxx bytes of flash verified`" and "`Fuses OK`".
 
+	koen@raspberrypi:/opt/arduino-1.8.9/hardware/tools/avr $ ./bin/avrdude -C ./etc/avrdude.conf -p m328p -P /dev/ttyUSB0 -c avrisp -b 19200 -U flash:w:/home/koen/src/paste_injector/arduino/arduino.ino.with_bootloader.eightanaloginputs.hex
 
-    Mac-Pro:avr koen$ ./bin/avrdude -C ./etc/avrdude.conf  -p m328p -P /dev/cu.usbmodem1d11 -c avrisp -b 19200 -U flash:w:/Users/koen/Documents/Arduino/paste_injector/arduino/arduino.ino.with_bootloader.eightanaloginputs.hex
+where `/dev/ttyUSB0` is the usb port of your Arduino Uno. Flashing should take about 20 seconds, and ends with "`xxx bytes of flash verified`" and "`Fuses OK`".
 
-    avrdude: AVR device initialized and ready to accept instructions
+Set the fuses of the atmega328p for an external resonator at 16MHz:
 
-    Reading | ################################################## | 100% 0.02s
+	koen@raspberrypi:/opt/arduino-1.8.9/hardware/tools/avr $ ./bin/avrdude -C ./etc/avrdude.conf -c avrisp -p m328p -P /dev/ttyUSB0 -U lfuse:w:0xff:m -U hfuse:w:0xde:m -U efuse:w:0xfd:m
 
-    avrdude: Device signature = 0x1e950f (probably m328p)
-    avrdude: NOTE: "flash" memory has been specified, an erase cycle will be performed
-             To disable this feature, specify the -D option.
-    avrdude: erasing chip
-    avrdude: reading input file "/Users/koen/Documents/Arduino/paste_injector/arduino/arduino.ino.with_bootloader.eightanaloginputs.hex"
-    avrdude: input file /Users/koen/Documents/Arduino/paste_injector/arduino/arduino.ino.with_bootloader.eightanaloginputs.hex auto detected as Intel Hex
-    avrdude: writing flash (32670 bytes):
-
-    Writing | ################################################## | 100% 13.06s
-
-    avrdude: 32670 bytes of flash written
-    avrdude: verifying flash memory against /Users/koen/Documents/Arduino/paste_injector/arduino/arduino.ino.with_bootloader.eightanaloginputs.hex:
-    avrdude: load data flash data from input file /Users/koen/Documents/Arduino/paste_injector/arduino/arduino.ino.with_bootloader.eightanaloginputs.hex:
-    avrdude: input file /Users/koen/Documents/Arduino/paste_injector/arduino/arduino.ino.with_bootloader.eightanaloginputs.hex auto detected as Intel Hex
-    avrdude: input file /Users/koen/Documents/Arduino/paste_injector/arduino/arduino.ino.with_bootloader.eightanaloginputs.hex contains 32670 bytes
-    avrdude: reading on-chip flash data:
-
-    Reading | ################################################## | 100% 7.42s
-
-    avrdude: verifying ...
-    avrdude: 32670 bytes of flash verified
-
-    avrdude: safemode: Fuses OK (E:FD, H:DA, L:FF)
-
-    avrdude done.  Thank you.
 
 This finishes writing bootloader and sketch to the solder paste dispenser. Disconnect the Arduino Uno. The atmega328p now contains a bootloader. Sketches can now be uploaded using the solder paste dispenser serial port.
 
 ## Firmware
 
-The solder paste dispenser is an arduino system. Once the bootstrap loader has been installed and the solder paste dispensercan be programmed using the arduino IDE.
+The solder paste dispenser is an arduino system. Once the bootstrap loader has been installed the solder paste dispenser can be programmed using the arduino IDE.
 
 To avoids spurious resets when connecting to the serial port, there is no capacitor between DTR and reset. But this also means that if you want to develop firmware for this board there is no automatic reset before uploading. Three options:
 
@@ -152,13 +126,20 @@ To avoids spurious resets when connecting to the serial port, there is no capaci
 * Use the serial port to upload. This is what I usually do. Before uploading connect RST and ground with a Dupont jumper wire. RST and ground are next to each other on the ISP connector. In the Arduino IDE, click Sketch -> Upload, count to three and remove the jumper wire.
 * When developing connect a 100n capacitor between serial adapter DTR and ISP connector RST pin. This allows the IDE to reset the microcontroller automatically just before uploading using the serial port.
 
-## Making your own
+## Soldering your own
 
 The github contains arduino source and kicad pcb design files. You'll find the [schematic](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/paste_dispenser_schematic.pdf), the [board layout](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/paste_dispenser_board.pdf), and the [bill of materials](https://github.com/koendv/paste_dispenser/blob/master/kicad/paste_dispenser/paste_dispenser.csv). This is a link to the pcb as an orderable [shared project at oshpark](http://www.oshpark.com/shared_projects/V5txbi41), and these are the components as a [shared project at Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=61ff8d7d43). Here are [zipped gerbers](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/gerbers.zip) for pcb manufacturing at [jlcpcb](https://jlcpcb.com/).
 
 If you prefer not to solder you can also build the controller on a breadboard, as in this [fritzing sketch](https://github.com/koendv/paste_dispenser/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V Arduino Pro Mini and a TB6612 breakout module.
 
-The [openscad/](https://github.com/koendv/paste_dispenser/tree/master/openscad) directory contains the .stl files for 3d-printing the mechanical part of the solder paste dispenser.
+## Printing your own
+The [openscad/](https://github.com/koendv/paste_dispenser/tree/master/openscad) directory contains the .stl files for [3d-printing](https://www.treatstock.com/c/seaside-3d) the mechanical part of the solder paste dispenser in ABS. Theses parts need finishing as follows:
+
+* Take the workpiece [insert_practice](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/insert_practice.stl) and practice using heat-set inserts. Set your soldering iron to the filament extrusion temperature used during 3D printing, about 255&deg;C.
+* Take the workpiece [motor_mount](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/motor_mount.stl) and place 4 heat-set inserts.
+* Take the workpiece [plunger](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/plunger.stl) and place 1 heat-set insert.
+* Using *a drop* of acetone, glue the small conical tip to the plunger. Acetone is a solvent for ABS.
+
 
 ## Care
 
