@@ -23,7 +23,7 @@
 
   // Adding tweaks for compensate for my printer's tolerace.
 //  A = 5.3 + 0.3;
-//  B = 5.8 + 0.4;
+//  B = 5.8 + 0.3;
 //  L = 7.4;
 //  D = 5.0;
 
