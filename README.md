@@ -130,16 +130,19 @@ To avoids spurious resets when connecting to the serial port, there is no capaci
 
 The github contains arduino source and kicad pcb design files. You'll find the [schematic](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/paste_dispenser_schematic.pdf), the [board layout](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/paste_dispenser_board.pdf), and the [bill of materials](https://github.com/koendv/paste_dispenser/blob/master/kicad/paste_dispenser/paste_dispenser.csv). This is a link to the pcb as an orderable [shared project at oshpark](http://www.oshpark.com/shared_projects/V5txbi41), and these are the components as a [shared project at Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=61ff8d7d43). Here are [zipped gerbers](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/gerbers.zip) for pcb manufacturing at [jlcpcb](https://jlcpcb.com/).
 
-If you prefer not to solder you can also build the controller on a breadboard, as in this [fritzing sketch](https://github.com/koendv/paste_dispenser/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V Arduino Pro Mini and a TB6612 breakout module.
+If you prefer not to solder SMD's you can also build the controller on a breadboard or as a through-hole pcb, as in this [fritzing sketch](https://github.com/koendv/paste_dispenser/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V Arduino Pro Mini and a TB6612 breakout module.
 
 ## Printing your own
 The [openscad/](https://github.com/koendv/paste_dispenser/tree/master/openscad) directory contains the .stl files for [3d-printing](https://www.treatstock.com/c/seaside-3d) the mechanical part of the solder paste dispenser in ABS. Theses parts need finishing as follows:
 
-* Take the workpiece [insert_practice](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/insert_practice.stl) and practice using heat-set inserts. Set your soldering iron to the filament extrusion temperature used during 3D printing, about 255&deg;C.
+* Take the workpiece [insert_practice](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/insert_practice.stl) and place 4 heat-set inserts, as a test. Set your soldering iron to the filament extrusion temperature used during 3D printing, about 255&deg;C.
 * Take the workpiece [motor_mount](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/motor_mount.stl) and place 4 heat-set inserts.
 * Take the workpiece [plunger](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/plunger.stl) and place 1 heat-set insert.
-* Using *a drop* of acetone, glue the small conical tip to the plunger. Acetone is a solvent for ABS.
+* Using **a drop** of acetone, glue the small conical tip to the plunger. Acetone is a solvent for ABS.
 
+Mechanical assembly is next.
+## Assembly
+The mechanical part consists of stepper motor, coupler and leadscrew.
 
 ## Care
 
