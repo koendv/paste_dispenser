@@ -138,11 +138,27 @@ The [openscad/](https://github.com/koendv/paste_dispenser/tree/master/openscad) 
 * Take the workpiece [insert_practice](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/insert_practice.stl) and place 4 heat-set inserts, as a test. Set your soldering iron to the filament extrusion temperature used during 3D printing, about 255&deg;C.
 * Take the workpiece [motor_mount](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/motor_mount.stl) and place 4 heat-set inserts.
 * Take the workpiece [plunger](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/plunger.stl) and place 1 heat-set insert.
-* Using **a drop** of acetone, glue the small conical tip to the plunger. Acetone is a solvent for ABS.
+* Using **a drop** of acetone, glue the small conical part to the plunger tip. Acetone is a solvent for ABS.
 
 Mechanical assembly is next.
 ## Assembly
-The mechanical part consists of stepper motor, coupler and leadscrew.
+The mechanical part consists of stepper motor, coupler and leadscrew. 
+
+The stepper motor is a [28BYJ-48](https://www.adafruit.com/product/858). The motor can be used "as is", or [modified to bipolar](https://coeleveld.com/wp-content/uploads/2016/10/Modifying-a-28BYJ-48-step-motor-from-unipolar-to-bipolar.pdf) for additional torque.
+
+The leadscrew is 64mm of M4 threaded rod, 0.7mm pitch.
+
+Two options exist for the coupler between motor and leadscrew. Choose between the 3D-printed ABS coupler and an aluminum coupler. 
+
+The 3D-printed ABS coupler needs an additional two M3 screws to close. Using the ABS coupler makes for a lightweight instrument. However, this is a piece under considerable mechanical stress, and the 3D-printed layers happen to be in the direction of the shearing forces. The motor torque may cause the coupler to crack or delaminate. If that happens, you can try tweaking printing parameters - higher temperature, lower printing speed - to improve bonding between layers. Or you can choose to buy a shaft coupler instead. 
+
+[Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress) are readily available from ebay or aliexpress. Before buying, check the following parameters: Length: 25mm Diameter: 19mm Shaft 1: 4mm Shaft 2: 5mm. Aluminum couplers easily handle the torque, but add weight. [Nylon shaft couplers](https://www.google.com/search?q=nylon+plastic+shaft+coupler+%2B"4mm"+aliexpress) don't add weight, but you'd have to buy a 4mm to 4mm coupler and ream out one end to 5mm yourself.
+
+I suggest trying the ABS coupler first.
+
+Attach the stepper motor to the motor mount using two nylon or stainless steel M4x10 hex socket screws. Nylon screws keep the weight down. Attach the syringe holder to the motor block, again with two M4x10 hex socket screws.
+
+The pins of the PCB align with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a 5V TTL serial to USB converter and the foot switch. 
 
 ## Care
 
@@ -158,5 +174,10 @@ In general, avoid "unstoppable force meets inmovable object" situations. Somethi
 * The kicad pcb hardware design is under Creative Commons - Attribution Share Alike license.
 
 * A solder paste dispenser is a small motor which pushes the plunger of a syringe. You can use it for solder paste or solder flux, but the dispenser can also be used as a syringe pump, to create small dots of glue in a precise and repeatable way, or to put small drops of lubricating oil on a mechanism.
+
+* Exactly how hard do we need to push? Take a syringe and (kitchen) scales. Grab the syringe by the syringe body, and push the syringe piston against the scales until the syringe releases solder paste. Take note of the weight the scales indicate. If the scales indicates pounds, multiply by 5 to get Newtons. If the scales indicate kilogrammes, multiply by 10 to get Newtons.
+Measured this way, pushing the plunger of 5cc and 10cc syringes of solder flux and solder paste needs a force between 20N and 30N.
+
+
 
 
