@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "settings.h"
-#include "tb6612.h"
+#include "motor.h"
 
 
   /* 
@@ -76,8 +76,8 @@ namespace settings {
   void microStepsCallback() {
     // check value of microsteps is a power of two
     if ((microSteps != 1) && (microSteps != 2) && (microSteps != 4) && (microSteps != 8) && (microSteps != 16) && (microSteps != 32)  && (microSteps != 64)) microSteps = 2; 
-    // set microsteps in tb6612 driver
-    tb6612::setMicrosteps(microSteps);
+    // set microsteps in stepper driver
+    motor::setMicrosteps(microSteps);
   }
  
   // menu itself.

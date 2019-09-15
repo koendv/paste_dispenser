@@ -4,7 +4,7 @@
 #include "buttons.h"
 #include "settings.h"
 #include "fsm.h"
-#include "tb6612.h"
+#include "motor.h"
 
 // Change EEPROM_LAYOUT_VERSION when number of indexes changed etc.
 
@@ -125,7 +125,7 @@ namespace settings {
     pullbackSteps = storedProfile.pullbackSteps[profileNumber];
     microSteps = storedProfile.microSteps[profileNumber];
     constrainConfig(); // make certain we have valid values
-    tb6612::setMicrosteps(microSteps); // update microstep settings in driver
+    motor::setMicrosteps(microSteps); // update microstep settings in stepper driver
     return;
   }
 
