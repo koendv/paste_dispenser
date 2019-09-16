@@ -148,7 +148,7 @@ I suggest trying the ABS coupler first.
 
 Attach the stepper motor to the motor mount using two nylon or stainless steel M4x10 hex socket screws. Nylon screws keep the weight down. Attach the syringe holder to the motor block, again with two M4x10 hex socket screws.
 
-The pins of the PCB align with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a 5V TTL serial to USB converter and the foot switch. 
+Align the pins of the PCB align with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a 5V TTL serial to USB converter and the foot switch. 
 
 ## Practice makes perfect
 
