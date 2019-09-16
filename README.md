@@ -72,16 +72,6 @@ The controller board has four headers:
 * J3 is the connector for the stepper motor. Both unipolar and bipolar steppers can be connected. Connect one coil to pins A1 and A2, and one coil to pins B1 and B2. Connect the center tap of unipolar steppers to pin GND.
 * J4 is the connector for the optional OLED display. Solder a 4-position female Dupont housing here.
 
-## Practice makes perfect
-
-For practice fill a syringe with a small amount (approx. 1 ml) of toothpaste. Print a pcb at scale 1:1 in black and white on paper and practice depositing toothpaste until you are comfortable with the solder paste dispenser.
-
-Before filling the syringe, run a nylon wire inside the syringe body. A small piece of fishing line is suitable. This nylon wire creates a small leak in the seal between plunger and syringe body, allowing the air to escape while you push the plunger down. Once the plunger is down, simply pull the nylon wire out and you can begin dispensing.
-
-## Zapta
-
-The controller board is 40mm x 30mm, and fits on [zapta](https://www.thingiverse.com/thing:1119914) solder paste dispensers with a [28BYJ-48](https://www.adafruit.com/product/858) stepper. However, the controller is not restricted to any specific model of solder paste dispenser; if a syringe pump uses a 5- or 6-wire unipolar or a 4-wire bipolar stepper motor, there's a reasonable chance this will work. Just check the stepper works at 5V and current stays below 1.2 amps.
-
 ## Bootstrapping
 
 The first compile is the hardest.
@@ -146,7 +136,7 @@ The mechanical part consists of stepper motor, coupler and leadscrew.
 
 The stepper motor is a [28BYJ-48](https://www.adafruit.com/product/858). The motor can be used "as is", or [modified to bipolar](https://coeleveld.com/wp-content/uploads/2016/10/Modifying-a-28BYJ-48-step-motor-from-unipolar-to-bipolar.pdf) for additional torque.
 
-The leadscrew is 64mm of M4 threaded rod, 0.7mm pitch.
+The leadscrew is 64mm of M4 threaded rod, 0.7mm pitch. The leadscrew mates with the M4 threaded insert in the plunger.
 
 Two options exist for the coupler between motor and leadscrew. Choose between the 3D-printed ABS coupler and an aluminum coupler. 
 
@@ -159,6 +149,12 @@ I suggest trying the ABS coupler first.
 Attach the stepper motor to the motor mount using two nylon or stainless steel M4x10 hex socket screws. Nylon screws keep the weight down. Attach the syringe holder to the motor block, again with two M4x10 hex socket screws.
 
 The pins of the PCB align with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a 5V TTL serial to USB converter and the foot switch. 
+
+## Practice makes perfect
+
+For practice fill a syringe with a small amount (approx. 1 ml) of toothpaste. Print a pcb at scale 1:1 in black and white on paper and practice depositing toothpaste until you are comfortable with the solder paste dispenser.
+
+Before filling the syringe, run a nylon wire inside the syringe body. A small piece of fishing line is suitable. This nylon wire creates a small leak in the seal between plunger and syringe body, allowing the air to escape while you push the plunger down. Once the plunger is down, simply pull the nylon wire out and you can begin dispensing.
 
 ## Care
 
@@ -174,6 +170,8 @@ In general, avoid "unstoppable force meets inmovable object" situations. Somethi
 * The kicad pcb hardware design is under Creative Commons - Attribution Share Alike license.
 
 * A solder paste dispenser is a small motor which pushes the plunger of a syringe. You can use it for solder paste or solder flux, but the dispenser can also be used as a syringe pump, to create small dots of glue in a precise and repeatable way, or to put small drops of lubricating oil on a mechanism.
+
+* The controller is not restricted to any specific model of solder paste dispenser; if a syringe pump uses a 5- or 6-wire unipolar or a 4-wire bipolar stepper motor, there's a reasonable chance this will work. Just check the stepper works at 5V and current stays below 1.2 amps.
 
 * Exactly how hard do we need to push? Take a syringe and (kitchen) scales. Grab the syringe by the syringe body, and push the syringe piston against the scales until the syringe releases solder paste. Take note of the weight the scales indicate. If the scales indicates pounds, multiply by 5 to get Newtons. If the scales indicate kilogrammes, multiply by 10 to get Newtons.
 Measured this way, pushing the plunger of 5cc and 10cc syringes of solder flux and solder paste needs a force between 20N and 30N.
