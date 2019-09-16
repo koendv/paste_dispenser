@@ -156,7 +156,7 @@ For practice fill a syringe with a small amount (approx. 1 ml) of toothpaste. Pr
 
 Before filling the syringe, run a nylon wire inside the syringe body. A small piece of fishing line is suitable. This nylon wire creates a small leak in the seal between plunger and syringe body, allowing the air to escape while you push the plunger down. Once the plunger is down, simply pull the nylon wire out and you can begin dispensing.
 
-## Care
+## Notes
 
 * There are a few situations which may result in breakage.
 If the piston pushes against the bottom of an empty syringe, something has to give.
@@ -165,7 +165,7 @@ In general, avoid "unstoppable force meets inmovable object" situations. Somethi
 
 * When not in use, loosen the syringe holder screws so the syringe isn't under constant pressure.
 
-## Notes
+* This design was inspired by solder paste dispensers by [zapta](https://www.thingiverse.com/thing:1119914) and [geir](https://www.thingiverse.com/thing:384680).
 
 * The kicad pcb hardware design is under Creative Commons - Attribution Share Alike license.
 
