@@ -123,6 +123,8 @@ The github contains arduino source and kicad pcb design files. You'll find the [
 If you prefer not to solder SMD's you can also build the controller on a breadboard or as a through-hole pcb, as in this [fritzing sketch](https://github.com/koendv/paste_dispenser/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V 16MHz Arduino Pro Mini and a TB6612 breakout module.
 
 ## Printing your own
+![](https://github.com/koendv/paste_dispenser/raw/master/doc/freshly_printed_workpieces.jpg)
+
 The [openscad/](https://github.com/koendv/paste_dispenser/tree/master/openscad) directory contains the .stl files for [3d-printing](https://www.treatstock.com/c/seaside-3d) the mechanical part of the solder paste dispenser in ABS. Theses parts need finishing as follows:
 
 * Take the workpiece [insert_practice](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/insert_practice.stl) and place 4 heat-set inserts, as a test. Set your soldering iron to the filament extrusion temperature used during 3D printing, about 255&deg;C.
