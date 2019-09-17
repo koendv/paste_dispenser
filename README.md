@@ -144,13 +144,15 @@ Two options exist for the coupler between motor and leadscrew. Choose between th
 
 The 3D-printed ABS coupler needs an additional two M3 screws to close. Using the ABS coupler makes for a lightweight instrument. However, this is a piece under considerable mechanical stress, and the 3D-printed layers happen to be in the direction of the shearing forces. The motor torque may cause the coupler to crack or delaminate. If that happens, you can try tweaking printing parameters - higher temperature, lower printing speed - to improve bonding between layers. Or you can choose to buy a shaft coupler instead. 
 
-[Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress) are readily available from ebay or aliexpress. Before buying, check the following parameters: Length: 25mm Diameter: 19mm Shaft 1: 4mm Shaft 2: 5mm. Aluminum couplers easily handle the torque, but add weight. [Nylon shaft couplers](https://www.google.com/search?q=nylon+plastic+shaft+coupler+%2B"4mm"+aliexpress) don't add much weight, but to get a 4mm to 5mm coupler you have to buy a 4mm to 4mm coupler and ream out one end to 5mm. These nylon shaft couplers have the following parameters: Length: 21mm Diameter: 13mm Shaft 1: 4mm Shaft 2: 4mm.
+[Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress) are readily available from ebay or aliexpress. Before buying, check the following parameters: Length: 25mm Diameter: 19mm Shaft 1: 4mm Shaft 2: 5mm. Aluminum couplers easily handle the torque, but add weight. [Nylon shaft couplers](https://www.google.com/search?q=nylon+plastic+shaft+coupler+%2B"4mm"+aliexpress) only weigh a few grammes, but to get a 4mm to 5mm coupler you have to buy a 4mm to 4mm coupler and ream out one end to 5mm. These nylon shaft couplers have the following parameters: Length: 21mm Diameter: 13mm Shaft 1: 4mm Shaft 2: 4mm.
 
 I suggest trying the ABS coupler first.
 
 Attach the stepper motor to the motor mount using two nylon or stainless steel M4x10 hex socket screws. Nylon screws keep the weight down. Attach the syringe holder to the motor block with two M4x10 hex socket screws.
 
-Align the pins of the PCB align with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a 5V TTL serial to USB converter and the foot switch. 
+Align the pins of the PCB align with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Plug the OLED display in the connector marked "SDA SCK VCC GND". Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a 5V TTL serial to USB converter and the foot switch. 
+
+If the motor turns the wrong way, swap pins A1 and A2, or pins B1 and B2.
 
 ## Practice makes perfect
 
