@@ -125,7 +125,7 @@ If you prefer not to solder SMD's you can also build the controller on a breadbo
 ## Printing your own
 ![](https://raw.githubusercontent.com/koendv/paste_dispenser/master/doc/freshly_printed.jpg)
 
-The [openscad/](https://github.com/koendv/paste_dispenser/tree/master/openscad) directory contains the .stl files for [3d-printing](https://www.treatstock.com/c/seaside-3d) the mechanical part of the solder paste dispenser in ABS using FDM. Theses parts need finishing as follows:
+The [openscad/](https://github.com/koendv/paste_dispenser/tree/master/openscad) directory contains the .stl files for [3d-printing](https://www.treatstock.com/c/seaside-3d) the mechanical part of the solder paste dispenser in ABS using FDM. These parts need finishing as follows:
 
 * Take the workpiece [insert_practice](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/insert_practice.stl) and place 4 heat-set inserts, as a test. Set your soldering iron to the filament extrusion temperature used during 3D printing, about 255&deg;C.
 * Take the workpiece [motor_mount](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/motor_mount.stl) and place 4 heat-set inserts.
@@ -162,6 +162,9 @@ Before filling the syringe, run a nylon wire inside the syringe body. A small pi
 
 ## Notes
 
+* Exactly how hard do we need to push? Take a syringe and (kitchen) scales. Grab the syringe by the syringe body, and push the syringe piston against the scales until the syringe releases solder paste. Take note of the weight the scales indicate. If the scales indicates pounds, multiply by 5 to get Newtons. If the scales indicate kilogrammes, multiply by 10 to get Newtons.
+Measured this way, pushing the plunger of 5cc and 10cc syringes of solder flux and solder paste needs a force between 20N and 30N.
+
 * There are a few situations which may result in breakage.
 If the piston pushes against the bottom of an empty syringe, something has to give.
 Likewise, if you try to squeeze paste out of a stoppered syringe.
@@ -169,16 +172,13 @@ In general, avoid "unstoppable force meets inmovable object" situations. Somethi
 
 * When not in use, loosen the syringe holder screws so the syringe isn't under constant pressure.
 
-* This design was inspired by solder paste dispensers by [zapta](https://www.thingiverse.com/thing:1119914) and [geir](https://www.thingiverse.com/thing:384680).
+* This design was inspired by solder paste dispensers by [zapta](https://www.thingiverse.com/thing:1119914) and [geir](https://www.thingiverse.com/thing:384680). The mechanical part is a remix of zapta's, with minor changes.
 
 * The kicad pcb hardware design is under Creative Commons - Attribution Share Alike license.
 
 * A solder paste dispenser is a small motor which pushes the plunger of a syringe. You can use it for solder paste or solder flux, but the dispenser can also be used as a syringe pump, to create small dots of glue in a precise and repeatable way, or to put small drops of lubricating oil on a mechanism.
 
 * The controller is not restricted to any specific model of solder paste dispenser; if a syringe pump uses a 5- or 6-wire unipolar or a 4-wire bipolar stepper motor, there's a reasonable chance this will work. Just check the stepper works at 5V and current stays below 1.2 amps.
-
-* Exactly how hard do we need to push? Take a syringe and (kitchen) scales. Grab the syringe by the syringe body, and push the syringe piston against the scales until the syringe releases solder paste. Take note of the weight the scales indicate. If the scales indicates pounds, multiply by 5 to get Newtons. If the scales indicate kilogrammes, multiply by 10 to get Newtons.
-Measured this way, pushing the plunger of 5cc and 10cc syringes of solder flux and solder paste needs a force between 20N and 30N.
 
 
 
