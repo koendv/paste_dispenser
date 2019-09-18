@@ -140,7 +140,7 @@ The stepper motor is a [28BYJ-48](https://www.adafruit.com/product/858). The mot
 
 The leadscrew is 64mm of M4 threaded rod, 0.7mm pitch. The leadscrew mates with the M4 threaded insert in the plunger.
 
-Two options exist for the coupler between motor and leadscrew. Choose between the 3D-printed ABS coupler and an aluminum coupler. 
+Two options exist for the coupler between motor and leadscrew. Choose between the 3D-printed ABS coupler buying an aluminum or nylon coupler. 
 
 The 3D-printed ABS coupler needs an additional two M3 screws to close. Using the ABS coupler makes for a lightweight instrument. However, this is a piece under considerable mechanical stress, and the 3D-printed layers happen to be in the direction of the shearing forces. The motor torque may cause the coupler to crack or delaminate. If that happens, you can try tweaking printing parameters - higher temperature, lower printing speed - to improve bonding between layers. Or you can choose to buy a shaft coupler instead. 
 
@@ -150,9 +150,13 @@ I suggest trying the ABS coupler first.
 
 Attach the stepper motor to the motor mount using two nylon or stainless steel M4x10 hex socket screws. Nylon screws keep the weight down. Attach the syringe holder to the motor block with two M4x10 hex socket screws.
 
-Align the pins of the PCB align with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Plug the OLED display in the connector marked "SDA SCK VCC GND". Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a 5V TTL serial to USB converter and the foot switch. 
+Align the pins of the PCB with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Plug the OLED display in the connector marked "SDA SCK VCC GND".
+
+Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a 5V TTL serial to USB converter (pins +5V,RX,TX,GND) and the foot switch (pins FTSW, GND). 
 
 If the motor turns the wrong way, swap pins A1 and A2, or pins B1 and B2.
+
+At this point you have a working solder paste dispenser, ready for use.
 
 ## Practice makes perfect
 
@@ -172,7 +176,7 @@ In general, avoid "unstoppable force meets inmovable object" situations. Somethi
 
 * When not in use, loosen the syringe holder screws so the syringe isn't under constant pressure.
 
-* This design was inspired by solder paste dispensers by [zapta](https://www.thingiverse.com/thing:1119914) and [geir](https://www.thingiverse.com/thing:384680). The mechanical part is a remix of zapta's, with minor changes.
+* This design was inspired by solder paste dispensers by [zapta](https://www.thingiverse.com/thing:1119914) and [geir](https://www.thingiverse.com/thing:384680). The mechanical part is a remix of zapta's, with only minor changes.
 
 * The kicad pcb hardware design is under Creative Commons - Attribution Share Alike license.
 
