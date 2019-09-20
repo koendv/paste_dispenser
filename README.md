@@ -134,6 +134,7 @@ The [openscad/](https://github.com/koendv/paste_dispenser/tree/master/openscad) 
 
 Mechanical assembly is next.
 ## Assembly
+![](https://github.com/koendv/paste_dispenser/raw/master/doc/mechanical_assembly.jpg)
 The mechanical part consists of stepper motor, coupler and leadscrew. 
 
 The stepper motor is a [28BYJ-48](https://www.adafruit.com/product/858). The motor can be used "as is", or [modified to bipolar](https://coeleveld.com/wp-content/uploads/2016/10/Modifying-a-28BYJ-48-step-motor-from-unipolar-to-bipolar.pdf) for additional torque.
@@ -142,15 +143,21 @@ The leadscrew is 64mm of M4 threaded rod, 0.7mm pitch. The leadscrew mates with 
 
 Two options exist for the coupler between motor and leadscrew. Choose between the 3D-printed ABS coupler buying an aluminum or nylon coupler. 
 
-The 3D-printed ABS coupler needs an additional two M3 screws to close. Using the ABS coupler makes for a lightweight instrument. However, this is a piece under considerable mechanical stress, and the 3D-printed layers happen to be in the direction of the shearing forces. The motor torque may cause the coupler to crack or delaminate. If that happens, you can try tweaking printing parameters - higher temperature, lower printing speed - to improve bonding between layers. Or you can choose to buy a shaft coupler instead. 
+Using and ABS 3D-printed coupler makes for a lightweight instrument. However, I'd like to redesign the coupler so mechanical stresses are smaller, and the FDM strands are perpendicular to the shearing forces, not parallel. Pending redesign, I'm using an off-the-shelf shaft coupler. 
 
-[Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress) are readily available from ebay or aliexpress. Before buying, check the following parameters: Length: 25mm Diameter: 19mm Shaft 1: 4mm Shaft 2: 5mm. Aluminum couplers easily handle the torque, but add weight. [Nylon shaft couplers](https://www.google.com/search?q=nylon+plastic+shaft+coupler+%2B"4mm"+aliexpress) only weigh a few grammes, but to get a 4mm to 5mm coupler you have to buy a 4mm to 4mm coupler and ream out one end to 5mm. These nylon shaft couplers have the following parameters: Length: 21mm Diameter: 13mm Shaft 1: 4mm Shaft 2: 4mm.
+[Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress) are readily available from ebay or aliexpress. Before buying, check the following parameters: Length: 25mm Diameter: 19mm Shaft 1: 4mm Shaft 2: 5mm. Aluminum couplers easily handle the torque, but add weight. 
 
-I suggest trying the ABS coupler first.
+[Nylon shaft couplers](https://www.google.com/search?q=nylon+plastic+shaft+coupler+%2B"4mm"+aliexpress) only weigh a few grammes, but to get a 4mm to 5mm coupler you have to buy a 4mm to 4mm coupler and ream out one end to 5mm. These nylon shaft couplers have the following parameters: Length: 21mm Diameter: 13mm Shaft 1: 4mm Shaft 2: 4mm.
 
 Attach the stepper motor to the motor mount using two nylon or stainless steel M4x10 hex socket screws. Nylon screws keep the weight down. Attach the syringe holder to the motor block with two M4x10 hex socket screws.
 
-Align the pins of the PCB with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Plug the OLED display in the connector marked "SDA SCK VCC GND".
+The syringe used is a BD 10cc "Luer-Lok", or one of its many [oriental clones](https://www.google.com/search?q=10cc+syringe+smt+smd+site%3A.aliexpress.com). Remove the black rubber piston head from the syringe and put it on the solder paste dispenser plunger.
+
+If during operation the plunger rotates instead of moving forward, clean the sides of the black rubber piston head with (isopropyl) alcohol to remove any grease. 
+
+## Adding the Electronics
+![](https://github.com/koendv/paste_dispenser/raw/master/doc/assembled.jpg)
+Align the pins of the PCB with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Plug the OLED display in the connector marked "SDA SCK VCC GND". Connect the stepper motor to header J3.
 
 Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a 5V TTL serial to USB converter (pins +5V,RX,TX,GND) and the foot switch (pins FTSW, GND). 
 
