@@ -2,6 +2,7 @@
 
 // This prints half a coupler. To get a shaft coupler you need to print two of these.
 // After printing remove the support from the screw holes by hand, with a 3mm drill.
+// Clamp between stepper shaft and leadscrew using four M3 x 10mm screws 
 
 include <NopSCADlib/lib.scad>;
 include  <util.scad>
@@ -11,7 +12,6 @@ coupler_width = 19.0;
 coupler_slot_width = 1.0;
 coupler_inradius = coupler_width/2 * cos(180/8);
 
-chamfer = 0.5;
 eps1 = 0.001;
 eps2 = 2 * eps1;
 $fn = 120;
@@ -27,7 +27,7 @@ stepper_shaft_width = 3.0 + 0.5;
 // Height of full round hole at the motor end.
 stepper_shaft_base_height = 3.5;
 
-// --- M4 threaded shart end
+// --- M4 threaded shaft end
 // Inner diameter of hole for shaft 2. This one fits the M4 threaded shaft.
 leadscrew_dia = 4.0 + 0.5;  
 // Length of hole for shaft 2.
@@ -36,9 +36,9 @@ leadscrew_height = 12;
 // --- M3 Clamping screws
 // Diameter of the screw holes.
 screw_hole_diameter = 3.3;
-// Diamter of the inset for the screws head.
+// Diameter of the inset for the screws head.
 screw_head_diameter = 5.7;
-// Diamter of the inset for the screws nuts.
+// Diameter of the inset for the screws nuts.
 screw_nut_diameter = 6.5;
 // Distance between screw head and nut.
 screw_head_to_nut = 7.0;
@@ -49,11 +49,7 @@ hole_offset_from_end = 5.0;
 
 module coupler_body() {
     rotate([0, 0, 180/8])
-    hull() {
-        cylinder(h = coupler_height, d = coupler_width - 2 * chamfer, $fn = 8);
-        translate([0, 0, chamfer])
-        cylinder(h = coupler_height  - 2 * chamfer, d = coupler_width, $fn = 8);
-    }
+    cylinder(h = coupler_height, d = coupler_width, $fn = 8);
 }
 
 module halfcoupler_body() {
