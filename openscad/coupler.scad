@@ -185,7 +185,4 @@ else {
     clearance_check();
 };
 
-
-
-
 // not truncated
