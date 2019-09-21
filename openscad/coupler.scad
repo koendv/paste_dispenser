@@ -1,125 +1,195 @@
 // 28BYJ-48 stepper motor to M4 threaded shaft coupler. 
 
-// Number of faces per 360 degrees. 
-$fn=180;
+// This prints half a coupler. To get a shaft coupler you need to print two of these.
+// After printing remove the support from the screw holes by hand, with a 3mm drill.
 
-// --- Motor end
-// Inner diameter.
-id1 = 5.0 + 0.7; 
+include <NopSCADlib/lib.scad>;
+include  <util.scad>
+
+coupler_height = 25.0;
+coupler_width = 19.0;
+coupler_slot_width = 1.0;
+coupler_inradius = coupler_width/2 * cos(180/8);
+
+chamfer = 0.5;
+eps1 = 0.001;
+eps2 = 2 * eps1;
+$fn = 120;
+layer_thickness = 0.5;
+
+// --- 28BYJ-48 stepper
+// shaft diameter
+stepper_shaft_dia = 5.0 + 0.7; 
 // Length of hole for shaft 1.
-h1 = 10;
-// Width between the flatten sides of the motor shaft hole.
-w1 = 3.0 + 0.5;
+stepper_shaft_height = 10;
+// Width between the flat sides of the motor shaft hole.
+stepper_shaft_width = 3.0 + 0.5;
 // Height of full round hole at the motor end.
-motoer_base_height = 3.5;
+stepper_shaft_base_height = 3.5;
 
 // --- M4 threaded shart end
-// Inner diameter of hole for shaft 2. This one fits the 
-// M4 threded shaft.
-id2 = 4.0 + 0.5;  
+// Inner diameter of hole for shaft 2. This one fits the M4 threaded shaft.
+leadscrew_dia = 4.0 + 0.5;  
 // Length of hole for shaft 2.
-h2 = 12;
+leadscrew_height = 12;
 
-// --- Body Cylinder
-od = 15;
-body_offset_from_center = 2;
-// Width of the slot along the coupler.
-slot_angle = 12;
-// Total coupler length;
-total_height = h1 + h2;
-
-// --- Clamping screws
+// --- M3 Clamping screws
 // Diameter of the screw holes.
 screw_hole_diameter = 3.3;
 // Diamter of the inset for the screws head.
-screw_head_diamter = 5.7;
+screw_head_diameter = 5.7;
 // Diamter of the inset for the screws nuts.
 screw_nut_diameter = 6.5;
 // Distance between screw head and nut.
-screw_head_to_nut = 7;
+screw_head_to_nut = 7.0;
 // Offset of the screws' centers from the coupler's center.
-hole_offset_from_center = 5;
+hole_offset_from_center = 5.0;
 // Offset of the screws' centers from the coupler ends.
-hole_offset_from_end = 5;
+hole_offset_from_end = 5.0;
 
-// Other
-shaft_chamfer = 0.5;
-body_chamfer = 1;
-
-// Coupler's body is excentric. This is the diameter, center at the shafts' center, 
-// of the required clearance for the coupler.
-bounding_diamter = 2*(od/2 + body_offset_from_center);
-
-// Print some info
-echo("*** total_height: ", total_height);
-echo("*** bounding_diamater: ", bounding_diamter);
-
-// Small measures, use to menatain manifold.
-eps1 = 0.001;
-eps2 = 2*eps1;
-
-// Generate a cylinder which is cut on both sides. Used to match the 
-// motor shaft end.
-module flatten_cylinder(d, w, h) {
-  intersection() {
-    cylinder(d=d, h=h);
-    translate([-d, -w/2, -eps1])  cube([2*d, w, h+eps2]);
-  }
-}
-
-// Chamfers for the top and bottom shaft holes.
-module shafts_chamfers() {
-  translate([0, 0, -eps1]) 
-      cylinder(d1=id1+2*shaft_chamfer, d2=eps1, h=(id1+shaft_chamfer)/2); 
- 
-  translate([0, 0, total_height-(id2+shaft_chamfer)/2+eps1]) 
-      cylinder(d1=eps1, d2=id2+2*shaft_chamfer, h=(id2+shaft_chamfer)/2);
-}
-
-// The blank cylinder of the boddy. Includes top and bottom chamfers.
-module body() {
-  hull() {
-    cylinder(d1=od-2*body_chamfer, d2=od, h=body_chamfer);
-    translate([0, 0, total_height-body_chamfer]) cylinder(d1=od, d2=od-2*body_chamfer, h=body_chamfer);
-  }
-}
-
-// Cut for one screw, with its nut.
-module screw(h) {
-  translate([0, hole_offset_from_center, h])
-  rotate([0, -90, 0])
-  union() {
-    translate([0, 0, -od/2]) cylinder(d=screw_hole_diameter, h=od); 
-    translate([0, 0, screw_head_to_nut/2]) cylinder(d=screw_head_diamter, h=od/2);
-    translate([0, 0, -(od + screw_head_to_nut)/2]) cylinder($fn=6, d=screw_nut_diameter, h=od/2);
-  }
-}
-
-// The clamping wedge slot.
-module slot() {
-  intersection() {
-    translate([0, -((od/2)-body_offset_from_center), -1]) 
+module coupler_body() {
+    rotate([0, 0, 180/8])
     hull() {
-      rotate([0, 0, slot_angle/2]) cube([eps1, 2*od, total_height+2]);
-      rotate([0, 0, -slot_angle/2]) cube([eps1, 2*od, total_height+2]);
+        cylinder(h = coupler_height, d = coupler_width - 2 * chamfer, $fn = 8);
+        translate([0, 0, chamfer])
+        cylinder(h = coupler_height  - 2 * chamfer, d = coupler_width, $fn = 8);
     }
-    translate([-od/2, 0, -1]) cube([od, od, total_height+2]);
-  }
 }
 
-// The entire coupler.
-module main() {
-  difference() {
-    translate([0, body_offset_from_center, 0]) body();
-    translate([0, 0, -eps1]) flatten_cylinder(id1, w1, h1+eps2);
-    translate([0, 0, -eps1]) cylinder(d=id1, h=motoer_base_height);
-    translate([0, 0, h1]) cylinder(d=id2, h=h2+eps1); 
-    screw(hole_offset_from_end);
-    screw(total_height - hole_offset_from_end);
-    slot();
-    shafts_chamfers();
-  }
+module halfcoupler_body() {
+    translate([coupler_height/2 , 0, 0])
+    difference() {
+        rotate([0, -90, 0])
+        coupler_body();
+        translate([-2 * coupler_height, - coupler_width, -coupler_slot_width/2])
+        cube([3 * coupler_height, 2 * coupler_width, 2 * coupler_width]);
+    }
 }
 
-main();
+module clamping_screw() {
+    union() {
+        cylinder(d = screw_hole_diameter, h = coupler_width);
+        translate([0, 0, -coupler_width])
+        cylinder(d = screw_head_diameter, h = coupler_width);
+        translate([-screw_head_diameter/2, -coupler_width, -coupler_width])
+        cube([screw_head_diameter, coupler_width, coupler_width]);
+    }
+}
 
+module clamping_nut() {
+    union() {
+        cylinder(d = screw_hole_diameter, h = coupler_width);
+        translate([0, 0, -coupler_width])
+        cylinder(d = screw_nut_diameter, h = coupler_width, $fn = 6);
+        translate([-screw_nut_diameter/2, 0, -coupler_width])
+        cube([screw_nut_diameter, coupler_width, coupler_width]);
+    }
+}
+
+module single_layer_support() {
+    intersection() {
+        translate([-coupler_height/2, -coupler_width/2, -screw_head_to_nut/2 - eps1])
+        cube([coupler_height, coupler_width, layer_thickness]);
+        halfcoupler_body();
+    }
+}
+
+module coupler_leadscrew() {
+    translate([coupler_height/2 - leadscrew_height, 0, 0])
+    rotate([0, 90, 0])
+    rotate([0, 0, 180/8])
+    cylinder_outer(h = 2 * leadscrew_height, d = leadscrew_dia, fn = 8);
+}
+
+module stepper_shaft() {
+    translate([-coupler_height/2 - eps2, 0, 0])
+    rotate([90, 0, 0])
+    rotate([0, 90, 0]) {
+        translate([0, 0, -eps1])
+        cylinder(h = stepper_shaft_base_height + eps2 , d = stepper_shaft_dia);
+        intersection() {
+            cylinder(h = stepper_shaft_height , d = stepper_shaft_dia);
+            translate([-stepper_shaft_dia/2, -stepper_shaft_width/2, stepper_shaft_base_height])
+            cube([stepper_shaft_dia, stepper_shaft_width, stepper_shaft_height]);
+        }
+    }
+}
+
+module halfcoupler() {
+    difference() {
+        union() {
+            difference() {
+                halfcoupler_body();
+                translate([coupler_height/2 - hole_offset_from_end, hole_offset_from_center, -screw_head_to_nut/2 ])
+                clamping_nut();
+                translate([-coupler_height/2 + hole_offset_from_end, hole_offset_from_center, -screw_head_to_nut/2])
+                clamping_nut();
+                translate([coupler_height/2 - hole_offset_from_end, -hole_offset_from_center, -screw_head_to_nut/2])
+                clamping_screw();
+                translate([-coupler_height/2 + hole_offset_from_end, -hole_offset_from_center, -screw_head_to_nut/2])
+                clamping_screw();
+            }
+            single_layer_support();
+        }
+        coupler_leadscrew();
+        stepper_shaft();
+    }
+}
+
+// model of an assembled shaft coupler in the motor mount cavity 
+// to check everything fits
+
+module clearance_check() {
+    // cavity in motor mount
+    cavity_height = 28;
+    cavity_diameter = 22;
+    %translate([-cavity_height/2, 0, 0])
+    rotate([0, 90, 0])
+    difference() {
+        translate([-cavity_diameter, -cavity_diameter, 0])
+        cube([2 * cavity_diameter, 2 * cavity_diameter,  cavity_height]);
+        translate([0, 0, -cavity_height/2])
+        cylinder(h = cavity_height * 2, d = cavity_diameter);
+    }
+
+    
+    // leadscrew
+    color("Gray")
+    translate([coupler_height/2 - leadscrew_height + 0.5, 0, 0])
+    rotate([0, 90, 0])
+    cylinder(h = coupler_height, d = 4.0);
+    
+    // clamping screws 
+    delta_x = coupler_height/2 - hole_offset_from_end;
+    delta_y = hole_offset_from_center;
+    for (x = [delta_x, -delta_x])
+    for (y = [delta_y, -delta_y])
+    mirror([0, 0, y>0?1:0])    
+    translate([x, y, 0]) {
+        translate([0, 0, -screw_head_to_nut/2])
+        mirror([0, 0, 1])
+        screw(M3_pan_screw, 10);
+        translate([0, 0, screw_head_to_nut/2])
+        nut(M3_nut);
+    }
+    
+    // two halfcouplers
+    rotate([180, 0, 0])
+    halfcoupler();
+    halfcoupler();
+}
+
+// choose between printer-ready halfcoupler and assembled model.
+
+if (true) {
+    translate([0, 0, coupler_inradius])
+    halfcoupler();
+}
+else {
+    clearance_check();
+};
+
+
+
+
+// not truncated
