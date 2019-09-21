@@ -141,7 +141,7 @@ The stepper motor is a [28BYJ-48](https://www.adafruit.com/product/858). The mot
 
 The leadscrew is 64mm of M4 threaded rod, 0.7mm pitch. The leadscrew mates with the M4 threaded insert in the plunger.
 
-Two options exist for the coupler between motor and leadscrew. Choose between the 3D-printed ABS coupler buying an aluminum or nylon coupler. 
+Two options exist for the coupler between motor and leadscrew. Choose between making it yourself or buying one.
 
 Using and ABS 3D-printed coupler makes for a lightweight instrument. However, I'd like to redesign the coupler so mechanical stresses are smaller, and the FDM strands are perpendicular to the shearing forces, not parallel. Pending redesign, I'm using an off-the-shelf shaft coupler. 
 
@@ -153,13 +153,13 @@ Attach the stepper motor to the motor mount using two nylon or stainless steel M
 
 The syringe used is a BD 10cc "Luer-Lok", or one of its many [oriental clones](https://www.google.com/search?q=10cc+syringe+smt+smd+site%3A.aliexpress.com). Remove the black rubber piston head from the syringe and put it on the solder paste dispenser plunger.
 
-If during operation the plunger rotates instead of moving forward, clean the sides of the black rubber piston head with (isopropyl) alcohol to remove any grease. 
+If during operation the plunger rotates instead of moving forward, clean the sides of the black rubber piston head with (isopropyl) alcohol to remove any grease. Friction between rubber piston and syringe is what keeps the plunger from spinning.
 
 ## Adding the Electronics
 ![](https://github.com/koendv/paste_dispenser/raw/master/doc/assembled.jpg)
 Align the pins of the PCB with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Plug the OLED display in the connector marked "SDA SCK VCC GND". Connect the stepper motor to header J3.
 
-Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a 5V TTL serial to USB converter (pins +5V,RX,TX,GND) and the foot switch (pins FTSW, GND). 
+Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a [5V TTL serial to USB converter](https://www.google.com/search?q=CH340C+site%3A.aliexpress.com) (pins +5V,RX,TX,GND) and the foot switch (pins FTSW, GND). 
 
 If the motor turns the wrong way, swap pins A1 and A2, or pins B1 and B2.
 
