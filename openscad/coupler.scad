@@ -154,7 +154,7 @@ module clearance_check() {
     shaft_height = 10;
     shaft_width = 3.0;
     shaft_base_height = 3.5;
-    translate([-coupler_height/2 - eps2, 0, 0])
+    translate([-coupler_height/2 - 0.1, 0, 0])
     rotate([0, 90, 0])
     color("Gray")
     intersection() {
@@ -195,7 +195,7 @@ module clearance_check() {
 
 // choose between printer-ready halfcoupler and assembled model.
 
-if (true) {
+if (false) {
     translate([0, 0, coupler_inradius])
     halfcoupler();
 }
