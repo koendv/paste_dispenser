@@ -67,8 +67,6 @@ module clamping_screw() {
         cylinder(d = screw_hole_diameter, h = coupler_width);
         translate([0, 0, -coupler_width])
         cylinder(d = screw_head_diameter, h = coupler_width);
-        translate([-screw_head_diameter/2, -coupler_width, -coupler_width])
-        cube([screw_head_diameter, coupler_width, coupler_width]);
     }
 }
 
@@ -77,8 +75,6 @@ module clamping_nut() {
         cylinder(d = screw_hole_diameter, h = coupler_width);
         translate([0, 0, -coupler_width])
         cylinder(d = screw_nut_diameter, h = coupler_width, $fn = 6);
-        translate([-screw_nut_diameter/2, 0, -coupler_width])
-        cube([screw_nut_diameter, coupler_width, coupler_width]);
     }
 }
 
@@ -195,7 +191,7 @@ module clearance_check() {
 
 // choose between printer-ready halfcoupler and assembled model.
 
-if (false) {
+if (true) {
     translate([0, 0, coupler_inradius])
     halfcoupler();
 }
