@@ -120,7 +120,7 @@ To avoids spurious resets when connecting to the serial port, there is no capaci
 
 The github contains arduino source and kicad pcb design files. You'll find the [schematic](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/paste_dispenser_schematic.pdf), the [board layout](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/paste_dispenser_board.pdf), and the [bill of materials](https://github.com/koendv/paste_dispenser/blob/master/kicad/paste_dispenser/paste_dispenser.csv). This is a link to the pcb as an orderable [shared project at oshpark](http://www.oshpark.com/shared_projects/V5txbi41), and these are the components as a [shared project at Mouser](https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=61ff8d7d43). Here are [zipped gerbers](https://github.com/koendv/paste_dispenser/raw/master/kicad/paste_dispenser/gerbers.zip) for pcb manufacturing at [jlcpcb](https://jlcpcb.com/).
 
-If you prefer not to solder SMD's you can also build the controller on a breadboard or as a through-hole pcb, as in this [fritzing sketch](https://github.com/koendv/paste_dispenser/raw/master/fritzing/paste_dispenser_fritzing.pdf) of a 5V 16MHz Arduino Pro Mini and a TB6612 breakout module.
+If you prefer not to solder SMD's you can also build the controller on a breadboard or as a through-hole pcb, as in this [fritzing sketch](https://github.com/koendv/paste_dispenser/raw/master/fritzing/paste_dispenser_fritzing_breadboard.pdf) of a 5V 16MHz Arduino Pro Mini and a TB6612 breakout module.
 
 ## Printing your own
 ![](https://raw.githubusercontent.com/koendv/paste_dispenser/master/doc/freshly_printed.jpg)
@@ -141,13 +141,13 @@ The stepper motor is a [28BYJ-48](https://www.adafruit.com/product/858). The mot
 
 The leadscrew is 64mm of M4 threaded rod, 0.7mm pitch. The leadscrew mates with the M4 threaded insert in the plunger.
 
-Two options exist for the coupler between motor and leadscrew. Choose between making it yourself or buying one.
+Two options exist for the coupler between motor and leadscrew: making it yourself or buying one.
 
-Using and ABS 3D-printed coupler makes for a lightweight instrument. However, I'd like to redesign the coupler so mechanical stresses are smaller, and the FDM strands are perpendicular to the shearing forces, not parallel. Pending redesign, I'm using an off-the-shelf shaft coupler. 
+* [Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress) are readily available from ebay or aliexpress. Aluminum couplers easily handle the torque, but the weight of the aluminum disturbs the balance of the instrument in your hand. 
 
-[Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress) are readily available from ebay or aliexpress. Before buying, check the following parameters: Length: 25mm Diameter: 19mm Shaft 1: 4mm Shaft 2: 5mm. Aluminum couplers easily handle the torque, but add weight. 
+* [Nylon shaft couplers](https://www.google.com/search?q=nylon+plastic+shaft+coupler+%2B"4mm"+aliexpress) only weigh a few grammes, but to get a 4mm to 5mm coupler you have to buy a 4mm to 4mm coupler and ream out one end to 5mm.
 
-[Nylon shaft couplers](https://www.google.com/search?q=nylon+plastic+shaft+coupler+%2B"4mm"+aliexpress) only weigh a few grammes, but to get a 4mm to 5mm coupler you have to buy a 4mm to 4mm coupler and ream out one end to 5mm. These nylon shaft couplers have the following parameters: Length: 21mm Diameter: 13mm Shaft 1: 4mm Shaft 2: 4mm.
+* [3D-printed ABS couplers](https://github.com/koendv/paste_dispenser/raw/master/doc/coupler.jpg) are a good compromise solution. A 3D-printed coupler makes for a lightweight instrument, and can be designed to fit the stepper shaft exactly. 
 
 Attach the stepper motor to the motor mount using two nylon or stainless steel M4x10 hex socket screws. Nylon screws keep the weight down. Attach the syringe holder to the motor block with two M4x10 hex socket screws.
 

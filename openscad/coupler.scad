@@ -94,7 +94,8 @@ module coupler_leadscrew() {
     translate([coupler_height/2 - leadscrew_height, 0, 0])
     rotate([0, 90, 0])
     rotate([0, 0, 180/8])
-    cylinder_outer(h = 2 * leadscrew_height, d = leadscrew_dia, fn = 8);
+    cylinder_outer(h = 2 * leadscrew_height, d = leadscrew_dia, fn = 8); // octagonal
+    //cylinder(h = 2 * leadscrew_height, d = leadscrew_dia); // round
 }
 
 module stepper_shaft() {
@@ -148,10 +149,27 @@ module clearance_check() {
         cylinder(h = cavity_height * 2, d = cavity_diameter);
     }
 
+    // motor shaft
+    shaft_dia = 5.0; 
+    shaft_height = 10;
+    shaft_width = 3.0;
+    shaft_base_height = 3.5;
+    translate([-coupler_height/2 - eps2, 0, 0])
+    rotate([0, 90, 0])
+    color("Gray")
+    intersection() {
+        cylinder(h = shaft_height, d = shaft_dia);
+        union() {
+            translate([-shaft_dia/2, -shaft_dia/2, 0])
+            cube([shaft_dia, shaft_dia, shaft_base_height]);
+            translate([-shaft_width/2, -shaft_dia/2, 0])
+            cube([shaft_width, shaft_dia, shaft_height]);
+        }
+    }
     
     // leadscrew
     color("Gray")
-    translate([coupler_height/2 - leadscrew_height + 0.5, 0, 0])
+    translate([coupler_height/2 - leadscrew_height, 0, 0])
     rotate([0, 90, 0])
     cylinder(h = coupler_height, d = 4.0);
     
@@ -177,7 +195,7 @@ module clearance_check() {
 
 // choose between printer-ready halfcoupler and assembled model.
 
-if (true) {
+if (false) {
     translate([0, 0, coupler_inradius])
     halfcoupler();
 }
