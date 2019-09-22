@@ -8,7 +8,7 @@ The is a remix of the ["zapta" Arduino Motorized SMT Solder Paste Dispenser](htt
 
 These parts have been designed with [openscad](http://www.openscad.org), a programming language for creating 3D-printable objects.
 
-![knurled threaded tapered brass insert](https://github.com/koendv/paste_dispenser/raw/master/openscad/inserts.jpg)
+![knurled threaded tapered brass insert](https://github.com/koendv/paste_dispenser/raw/master/doc/inserts.jpg)
 
 This build requires 5 M4 threaded inserts, type *IUB-M4-2*. You push these [heat-set inserts](https://www.lulzbot.com/learn/tutorials/heat-set-inserts-tips-and-tricks) in with a hot soldering iron (approx. 255 &deg;C). You may want to practice on [insert_practice.stl](https://github.com/koendv/paste_dispenser/blob/master/openscad/mcmaster-94180A353/insert_practice.stl) first.
 

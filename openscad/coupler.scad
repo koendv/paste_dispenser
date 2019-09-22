@@ -88,7 +88,7 @@ module single_layer_support() {
 
 // Make a V-shaped groove for leadscrew and stepper shaft to rest in
 // This way there is always a position where everything fits,
-// no matter what the tolerance of the printer.
+// no matter what printer tolerance 
 
 module coupler_leadscrew() {
     translate([coupler_height/2 - leadscrew_height, 0, 0])
