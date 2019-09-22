@@ -120,7 +120,6 @@ module stepper_shaft() {
 module coupler_leadscrew() {
     translate([coupler_height/2 - leadscrew_height, 0, 0])
     rotate([0, 90, 0])
-    rotate([0, 0, 180/8])
     cylinder(h = 2 * leadscrew_height, d = leadscrew_dia); // round
 }
 
