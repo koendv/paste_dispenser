@@ -141,7 +141,7 @@ The stepper motor is a [28BYJ-48](https://www.adafruit.com/product/858). The mot
 
 The leadscrew is 64mm of M4 threaded rod, 0.7mm pitch. The leadscrew mates with the M4 threaded insert in the plunger.
 
-Two options exist for the coupler between motor and leadscrew: making it yourself or buying one.
+For the coupler between motor and leadscrew, choose between making it yourself or buying one.
 
 * [Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress) are readily available from ebay or aliexpress. Aluminum couplers easily handle the torque, but the weight of the aluminum disturbs the balance of the instrument in your hand. 
 
@@ -153,7 +153,7 @@ Attach the stepper motor to the motor mount using two nylon or stainless steel M
 
 The syringe used is a BD 10cc "Luer-Lok", or one of its many [oriental clones](https://www.google.com/search?q=10cc+syringe+smt+smd+site%3A.aliexpress.com). Remove the black rubber piston head from the syringe and put it on the solder paste dispenser plunger.
 
-If during operation the plunger rotates instead of moving forward, clean the sides of the black rubber piston head with (isopropyl) alcohol to remove any grease. Friction between rubber piston and syringe is what keeps the plunger from spinning.
+Friction between rubber piston and syringe is what keeps the plunger from spinning. If during operation the plunger rotates instead of moving forward, clean the sides of the black rubber piston head with (isopropyl) alcohol to remove any grease. 
 
 ## Adding the Electronics
 ![](https://github.com/koendv/paste_dispenser/raw/master/doc/assembled.jpg)
