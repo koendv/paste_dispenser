@@ -2,7 +2,7 @@
 
 // This prints half a coupler. To get a shaft coupler you need to print two of these.
 // After printing remove the support from the screw holes by hand, with a 3mm drill.
-// Clamp between stepper shaft and leadscrew using four M3 x 10mm screws 
+// Clamp stepper shaft and leadscrew using four M3 x 10mm screws 
 
 include <NopSCADlib/lib.scad>;
 include  <util.scad>
@@ -86,12 +86,42 @@ module single_layer_support() {
     }
 }
 
+// Make a V-shaped groove for leadscrew and stepper shaft to rest in
+// This way there is always a position where everything fits,
+// no matter what the tolerance of the printer.
+
 module coupler_leadscrew() {
     translate([coupler_height/2 - leadscrew_height, 0, 0])
     rotate([0, 90, 0])
     rotate([0, 0, 180/8])
     cylinder_outer(h = 2 * leadscrew_height, d = leadscrew_dia, fn = 8); // octagonal
-    //cylinder(h = 2 * leadscrew_height, d = leadscrew_dia); // round
+}
+
+module stepper_shaft() {
+    translate([-coupler_height/2 - eps2, 0, 0])
+    rotate([0, 90, 0])
+    intersection() {
+        rotate([0, 0, 180/8])
+        cylinder_outer(h = stepper_shaft_height, d = stepper_shaft_dia, fn = 8);
+        union() {
+            translate([-stepper_shaft_dia/2, -stepper_shaft_dia/2, 0])
+            cube([stepper_shaft_dia, stepper_shaft_dia, stepper_shaft_base_height]);
+            translate([-stepper_shaft_width/2, -stepper_shaft_dia/2, 0])
+            cube([stepper_shaft_width, stepper_shaft_dia, stepper_shaft_height]);
+        }
+    }
+}
+
+
+/*
+// Old version:
+// Make circular holes for leadscrew and stepper shaft.
+
+module coupler_leadscrew() {
+    translate([coupler_height/2 - leadscrew_height, 0, 0])
+    rotate([0, 90, 0])
+    rotate([0, 0, 180/8])
+    cylinder(h = 2 * leadscrew_height, d = leadscrew_dia); // round
 }
 
 module stepper_shaft() {
@@ -107,6 +137,8 @@ module stepper_shaft() {
         }
     }
 }
+
+*/
 
 module halfcoupler() {
     difference() {
@@ -198,5 +230,8 @@ if (true) {
 else {
     clearance_check();
 };
+
+
+ 
 
 // not truncated
