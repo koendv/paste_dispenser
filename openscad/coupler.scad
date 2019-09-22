@@ -195,7 +195,7 @@ module clearance_check() {
 
 // choose between printer-ready halfcoupler and assembled model.
 
-if (false) {
+if (true) {
     translate([0, 0, coupler_inradius])
     halfcoupler();
 }
