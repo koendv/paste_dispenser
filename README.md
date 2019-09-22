@@ -185,6 +185,8 @@ In general, avoid "unstoppable force meets inmovable object" situations. Somethi
 
 * This design was inspired by solder paste dispensers by [zapta](https://www.thingiverse.com/thing:1119914) and [geir](https://www.thingiverse.com/thing:384680). The mechanical part is a remix of zapta's, with only minor changes.
 
+* This design was built around a Atmega328p "Pro Mini" and a TB6612 stepper driver. An alternative design built around a STM32F103 "Black Pill" and a TMC2130 SilentStepStick would hit a different price point, but would allow detecting when the plunger has reached the bottom of the syringe and no longer advances. 
+
 * The kicad pcb hardware design is under Creative Commons - Attribution Share Alike license.
 
 * A solder paste dispenser is a small motor which pushes the plunger of a syringe. You can use it for solder paste or solder flux, but the dispenser can also be used as a syringe pump, to create small dots of glue in a precise and repeatable way, or to put small drops of lubricating oil on a mechanism.
