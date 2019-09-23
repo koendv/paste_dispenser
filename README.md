@@ -185,14 +185,11 @@ In general, avoid "unstoppable force meets inmovable object" situations. Somethi
 
 * This design was inspired by solder paste dispensers by [zapta](https://www.thingiverse.com/thing:1119914) and [geir](https://www.thingiverse.com/thing:384680). The mechanical part is a remix of zapta's, with only minor changes.
 
-* This design was built around a Atmega328p "Pro Mini" and a TB6612 stepper driver. An alternative design would be a STM32F103 "Black Pill" and a TMC2130 SilentStepStick. The STM32F103 has built-in USB and enough cpu to run a comprehensive menu system. On the stepper side, the TMC2130 StallGuard feature allows detecting when the plunger has reached the bottom of the syringe and no longer advances, so software can back off the plunger a few steps before mechanical damage occurs. But such a design would hit a different price point. 
-
 * The kicad pcb hardware design is under Creative Commons - Attribution Share Alike license.
 
 * A solder paste dispenser is a small motor which pushes the plunger of a syringe. You can use it for solder paste or solder flux, but the dispenser can also be used as a syringe pump, to create small dots of glue in a precise and repeatable way, or to put small drops of lubricating oil on a mechanism.
 
 * The controller is not restricted to any specific model of solder paste dispenser; if a syringe pump uses a 5- or 6-wire unipolar or a 4-wire bipolar stepper motor, there's a reasonable chance this will work. Just check the stepper works at 5V and current stays below 1.2 amps.
 
-
-
+* This design was built around a Atmega328p "Pro Mini" and a TB6612 stepper driver. An alternative design would be a STM32F103 "Black Pill" and a TMC2130 SilentStepStick. The STM32F103 has built-in USB and enough cpu to run a comprehensive menu system. On the stepper side, the TMC2130 StallGuard feature allows detecting when the plunger has reached the bottom of the syringe, so software can move the plunger back a few steps any before mechanical damage occurs. But such a design would hit a different price point. 
 
