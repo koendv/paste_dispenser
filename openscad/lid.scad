@@ -2,9 +2,9 @@
 
 /* 
  Flow to generate .stl file of pcb:
- - In kicad: File... Export... STEP
+ - In kicad: In pcbnew: File... Export... STEP
  - In FreeCad: 
-    File... Open
+    File... Open ... (select file exported from kicad)
     Edit... Select All
     File... Export... STL
  */
