@@ -78,6 +78,8 @@ module clamping_nut() {
     }
 }
 
+// a single bridging layer that higher layers rest upon
+
 module single_layer_support() {
     intersection() {
         translate([-coupler_height/2, -coupler_width/2, -screw_head_to_nut/2 - eps1])
@@ -86,9 +88,8 @@ module single_layer_support() {
     }
 }
 
-// Make a V-shaped groove for leadscrew and stepper shaft to rest in
-// This way there is always a position where everything fits,
-// no matter what printer tolerance 
+// Make a V-shaped groove for leadscrew shaft to rest in
+// This way there is always a width that fits, no matter printer tolerance
 
 module coupler_leadscrew() {
     translate([coupler_height/2 - leadscrew_height, 0, 0])
@@ -115,7 +116,7 @@ module stepper_shaft() {
 
 /*
 // Old version:
-// Make circular holes for leadscrew and stepper shaft.
+// Circular holes for leadscrew and stepper shaft.
 
 module coupler_leadscrew() {
     translate([coupler_height/2 - leadscrew_height, 0, 0])
