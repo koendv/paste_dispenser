@@ -1,8 +1,10 @@
-// 28BYJ-48 stepper motor to M4 threaded shaft coupler. 
+// 28BYJ-48 stepper motor to M4 threaded shaft coupler.
 
 // This prints half a coupler. To get a shaft coupler you need to print two of these.
 // After printing remove the support from the screw holes by hand, with a 3mm drill.
-// Clamp stepper shaft and leadscrew using four M3 x 10mm screws 
+// Clamp stepper shaft and leadscrew using four M3 x 10mm screws
+
+// This file also contains an assembled model of the shaft coupler, stepper shaft and lead screw.
 
 include <NopSCADlib/lib.scad>;
 include  <util.scad>
@@ -19,7 +21,7 @@ layer_thickness = 0.5;
 
 // --- 28BYJ-48 stepper
 // shaft diameter
-stepper_shaft_dia = 5.0 + 0.7; 
+stepper_shaft_dia = 5.0 + 0.7;
 // Length of hole for shaft 1.
 stepper_shaft_height = 10;
 // Width between the flat sides of the motor shaft hole.
@@ -29,7 +31,7 @@ stepper_shaft_base_height = 3.5;
 
 // --- M4 threaded shaft end
 // Inner diameter of hole for shaft 2. This one fits the M4 threaded shaft.
-leadscrew_dia = 4.0 + 0.5;  
+leadscrew_dia = 4.0 + 0.5;
 // Length of hole for shaft 2.
 leadscrew_height = 12;
 
@@ -161,10 +163,23 @@ module halfcoupler() {
     }
 }
 
-// model of an assembled shaft coupler in the motor mount cavity 
+/* make cutout */
+
+module cutout(cut = true) {
+    if (cut)
+        difference() {
+            children();
+            translate([-100, -200, -100])
+            cube([200, 200, 200]);
+        }
+    else
+        children();
+}
+
+// model of an assembled shaft coupler in the motor mount cavity
 // to check everything fits
 
-module clearance_check() {
+module assembly() {
     // cavity in motor mount
     cavity_height = 28;
     cavity_diameter = 22;
@@ -178,7 +193,7 @@ module clearance_check() {
     }
 
     // motor shaft
-    shaft_dia = 5.0; 
+    shaft_dia = 5.0;
     shaft_height = 10;
     shaft_width = 3.0;
     shaft_base_height = 3.5;
@@ -194,31 +209,34 @@ module clearance_check() {
             cube([shaft_width, shaft_dia, shaft_height]);
         }
     }
-    
+
     // leadscrew
     color("Gray")
-    translate([coupler_height/2 - leadscrew_height, 0, 0])
+    translate([coupler_height/2 - leadscrew_height + 0.1, 0, 0])
     rotate([0, 90, 0])
     cylinder(h = coupler_height, d = 4.0);
-    
-    // clamping screws 
-    delta_x = coupler_height/2 - hole_offset_from_end;
-    delta_y = hole_offset_from_center;
-    for (x = [delta_x, -delta_x])
-    for (y = [delta_y, -delta_y])
-    mirror([0, 0, y>0?1:0])    
-    translate([x, y, 0]) {
-        translate([0, 0, -screw_head_to_nut/2])
-        mirror([0, 0, 1])
-        screw(M3_pan_screw, 10);
-        translate([0, 0, screw_head_to_nut/2])
-        nut(M3_nut);
+
+    cutout() {
+        // clamping screws
+        delta_x = coupler_height/2 - hole_offset_from_end;
+        delta_y = hole_offset_from_center;
+        for (x = [delta_x, -delta_x])
+        for (y = [delta_y, -delta_y])
+        mirror([0, 0, y>0?1:0])
+        translate([x, y, 0]) {
+            translate([0, 0, -screw_head_to_nut/2])
+            mirror([0, 0, 1])
+            screw(M3_pan_screw, 10);
+            translate([0, 0, screw_head_to_nut/2])
+            nut(M3_nut);
+        }
+
+
+        // two halfcouplers
+        rotate([180, 0, 0])
+        halfcoupler();
+        halfcoupler();
     }
-    
-    // two halfcouplers
-    rotate([180, 0, 0])
-    halfcoupler();
-    halfcoupler();
 }
 
 // choose between printer-ready halfcoupler and assembled model.
@@ -228,10 +246,7 @@ if (true) {
     halfcoupler();
 }
 else {
-    clearance_check();
+    assembly();
 };
-
-
- 
 
 // not truncated
