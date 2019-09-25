@@ -1,4 +1,5 @@
 // pcb cover
+// needs work.
 
 /* 
  Flow to generate .stl file of pcb:
@@ -11,6 +12,7 @@
 
 import("paste_dispenser.stl", convexity=20);
 $fn = 120;
+slack = 0.25; // slack around components
 
 // hole for pinheader. parameters are number of rows, number of columns.
 
@@ -32,12 +34,13 @@ module led() {
     square([2, 1.25], true);
 }
 
-module lid() {
+module cover() {
     difference() {
         cube([40, 30, 2]);
         translate([0, 0, -1])
         linear_extrude(height = 10) 
-        offset(r  =  0.25) { 
+        offset(r  =  slack) { 
+            // positioning data from .drl drill file 
             translate(([21.36, 6.58]+[27.86, 2.08])/2) button(); // 4 pushbuttons
             translate(([11.708, 6.58]+[18.208, 2.08])/2) button();
             translate(([31.012, 6.58]+[37.512, 2.08])/2)  button();
@@ -46,6 +49,7 @@ module lid() {
             translate([15.772, 28.043]) pinheader(5, 1); // stepper
             translate([34.06, 17.248]) pinheader(1, 4);  // oled
             translate([37.87, 12.168]) pinheader(1, 6);  //ext vertical header
+            // positioning data from .pos pick-and-place file 
             translate([30.377, 27.916]) led(); // led
         }
     }
@@ -53,6 +57,6 @@ module lid() {
 
 translate([0, 0, 6.5])
 color("grey")
-lid();
+cover();
 
 // not truncated
