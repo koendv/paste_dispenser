@@ -1,18 +1,14 @@
 // pcb cover
-// needs work.
+// needs more aesthetics.
 
-/* 
- Flow to generate .stl file of pcb:
- - In kicad: In pcbnew: File... Export... STEP
- - In FreeCad: 
-    File... Open ... (select file exported from kicad)
-    Edit... Select All
-    File... Export... STL
- */
-
-import("paste_dispenser.stl", convexity=20);
 $fn = 120;
+eps1 = 0.001;
 slack = 0.25; // slack around components
+wall_thickness = 2.0;
+cover_height = 8.0;
+pcb_thickness = 1.6;
+pcb_size_x = 40;
+pcb_size_y = 30;
 
 // hole for pinheader. parameters are number of rows, number of columns.
 
@@ -34,9 +30,43 @@ module led() {
     square([2, 1.25], true);
 }
 
+module corner_side() {
+    hull() {
+        cube(wall_thickness);
+        translate([0, 0, cover_height])
+        cube([wall_thickness, cover_height + wall_thickness, eps1]);
+    }
+}
+
+module corner() {
+    translate([0, -wall_thickness, 0])
+    corner_side();
+    translate([wall_thickness, -wall_thickness, 0])
+    rotate([0, 0, 90])
+    corner_side();
+    translate([-wall_thickness, 0, pcb_thickness])
+    cube([wall_thickness, wall_thickness, cover_height - pcb_thickness]);
+}
+
+module corners() {
+    rotate([0, 0, 270])
+    corner();
+    translate([pcb_size_x, 0, 0])
+    rotate([0, 0, 0])
+    corner();
+    translate([0, pcb_size_y, 0])
+    rotate([0, 0, 180])
+    corner();
+    translate([pcb_size_x, pcb_size_y, 0])
+    rotate([0, 0, 90])
+    corner();    
+}
+
 module cover() {
+    translate([0, 0, cover_height])
     difference() {
-        cube([40, 30, 2]);
+        translate([-wall_thickness, -wall_thickness, 0])
+        cube([pcb_size_x + 2 * wall_thickness, pcb_size_y + 2 * wall_thickness, wall_thickness]);
         translate([0, 0, -1])
         linear_extrude(height = 10) 
         offset(r  =  slack) { 
@@ -53,10 +83,29 @@ module cover() {
             translate([30.377, 27.916]) led(); // led
         }
     }
+    corners();
 }
 
-translate([0, 0, 6.5])
-color("grey")
-cover();
+// choose between ready-to-print cover, and assembly of cover and pcb.
+if (false) {
+    // cover, positioned for fdm printing
+    translate([pcb_size_x + wall_thickness, wall_thickness, cover_height + pcb_thickness])
+    rotate([0, 180, 0])
+    cover();
+}
+else {
+    // assembly of cover and pcb
+    color("Blue")
+    cover();
+ 
+    //   Flow to generate .stl file of pcb:
+    // - In kicad: In pcbnew: File... Export... STEP
+    // - In FreeCad: 
+    // File... Open ... (select file exported from kicad)
+    // Edit... Select All
+    // File... Export... STL
 
+    import("paste_dispenser.stl", convexity=20);
+}
+    
 // not truncated
