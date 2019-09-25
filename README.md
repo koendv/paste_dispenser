@@ -130,7 +130,7 @@ The [openscad/](https://github.com/koendv/paste_dispenser/tree/master/openscad) 
 * Take the workpiece [insert_practice](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/insert_practice.stl) and place 4 heat-set inserts, as a test. Set your soldering iron to the filament extrusion temperature used during 3D printing, about 255&deg;C.
 * Take the workpiece [motor_mount](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/motor_mount.stl) and place 4 heat-set inserts.
 * Take the workpiece [plunger](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/plunger.stl) and place 1 heat-set insert.
-* Using **a drop** of acetone, glue the small conical part to the plunger tip. Acetone is a solvent for ABS.
+* Using **a drop** of acetone, glue the small conical [plunger tip](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/plunger_tip.stl) to the plunger. Acetone is a solvent for ABS.
 
 Mechanical assembly is next.
 ## Assembly
@@ -149,9 +149,9 @@ For the coupler between motor and leadscrew, choose between making it yourself o
 
 * [3D-printed ABS couplers](https://github.com/koendv/paste_dispenser/raw/master/doc/coupler.jpg) are a good compromise solution. A 3D-printed coupler makes for a lightweight instrument, and can be designed to fit the stepper shaft exactly. 
 
-The openscad directory contains stl files for a [shaft coupler](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/coupler.stl). Print two coupler halves. Clamp the coupler halves on stepper shaft and leadscrew using four M3 x 10mm screws.
+Print two [shaft coupler](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/coupler.stl) halves. Attach the shaft coupler halves to stepper shaft and leadscrew using four M3 x 10mm screws.
 
-Attach the stepper motor to the motor mount using two nylon or stainless steel M4x10 hex socket screws. Nylon screws keep the weight down. Attach the syringe holder to the motor block with two M4x10 hex socket screws.
+Attach the stepper motor to the motor mount using two nylon or stainless steel M4x10 hex socket screws. Nylon screws keep the weight down. Attach the [syringe holder](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/syringe_holder.stl) to the motor block with two M4x10 hex socket screws.
 
 The syringe used is a BD 10cc "Luer-Lok", or one of its many [oriental clones](https://www.google.com/search?q=10cc+syringe+smt+smd+site%3A.aliexpress.com). Remove the black rubber piston head from the syringe and put it on the solder paste dispenser plunger.
 
@@ -175,9 +175,6 @@ Before filling the syringe, run a nylon wire inside the syringe body. A small pi
 
 ## Notes
 
-* Exactly how hard do we need to push? Take a syringe and (kitchen) scales. Grab the syringe by the syringe body, and push the syringe piston against the scales until the syringe releases solder paste. Take note of the weight the scales indicate. If the scales indicates pounds, multiply by 5 to get Newtons. If the scales indicate kilogrammes, multiply by 10 to get Newtons.
-Measured this way, pushing the plunger of 5cc and 10cc syringes of solder flux and solder paste needs a force between 20N and 30N.
-
 * There are a few situations which may result in breakage.
 If the piston pushes against the bottom of an empty syringe, something has to give.
 Likewise, if you try to squeeze paste out of a stoppered syringe.
@@ -185,13 +182,16 @@ In general, avoid "unstoppable force meets inmovable object" situations. Somethi
 
 * When not in use, loosen the syringe holder screws so the syringe isn't under constant pressure.
 
-* This design was inspired by solder paste dispensers by [zapta](https://www.thingiverse.com/thing:1119914) and [geir](https://www.thingiverse.com/thing:384680). The mechanical part is a remix of zapta's, with only minor changes.
-
-* The kicad pcb hardware design is under Creative Commons - Attribution Share Alike license.
-
 * A solder paste dispenser is a small motor which pushes the plunger of a syringe. You can use it for solder paste or solder flux, but the dispenser can also be used as a syringe pump, to create small dots of glue in a precise and repeatable way, or to put small drops of lubricating oil on a mechanism.
 
 * The controller is not restricted to any specific model of solder paste dispenser; if a syringe pump uses a 5- or 6-wire unipolar or a 4-wire bipolar stepper motor, there's a reasonable chance this will work. Just check the stepper works at 5V and current stays below 1.2 amps.
+
+* Exactly how hard do we need to push? Take a syringe and (kitchen) scales. Grab the syringe by the syringe body, and push the syringe piston against the scales until the syringe releases solder paste. Take note of the weight the scales indicate. If the scales indicates pounds, multiply by 5 to get Newtons. If the scales indicate kilogrammes, multiply by 10 to get Newtons.
+Measured this way, pushing the plunger of 5cc and 10cc syringes of solder flux and solder paste needs a force between 20N and 30N.
+
+* The kicad pcb hardware design is under Creative Commons - Attribution Share Alike license.
+
+* This design was inspired by solder paste dispensers by [zapta](https://www.thingiverse.com/thing:1119914) and [geir](https://www.thingiverse.com/thing:384680). The mechanical part is a remix of zapta's, with only minor changes.
 
 * This design was built around a Atmega328p "Pro Mini" and a TB6612 stepper driver. An alternative design would be a STM32F103 "Black Pill" and a TMC2130 SilentStepStick stepper driver. The STM32F103 has enough cpu to run a comprehensive menu system and built-in usb. The TMC2130 stall detection allows detecting when the plunger has reached the bottom of the syringe, so software can move the plunger back a few steps before any mechanical damage occurs. But such a design would hit a different price point. 
 
