@@ -77,7 +77,7 @@ module cover() {
             translate(([2.056, 6.58]+[8.556, 2.08])/2) button();
             translate([28.98, 10.644]) pinheader(3, 2);  // icp
             translate([15.772, 28.043]) pinheader(5, 1); // stepper
-            translate([34.06, 17.248]) pinheader(1, 4);  // oled
+            translate([34.06, 17.248]) pinheader(1, 4);  // oled. XXX add support for oled screen
             translate([37.87, 12.168]) pinheader(1, 6);  //ext vertical header
             // positioning data from .pos pick-and-place file 
             translate([30.377, 27.916]) led(); // led
@@ -95,7 +95,6 @@ if (false) {
 }
 else {
     // assembly of cover and pcb
-    color("Blue")
     cover();
  
     //   Flow to generate .stl file of pcb:
@@ -105,6 +104,7 @@ else {
     // Edit... Select All
     // File... Export... STL
 
+    color("LimeGreen")
     import("paste_dispenser.stl", convexity=20);
 }
     
