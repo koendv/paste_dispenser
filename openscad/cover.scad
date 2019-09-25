@@ -32,9 +32,9 @@ module led() {
 
 module corner_side() {
     hull() {
-        cube(wall_thickness);
+        cube([wall_thickness, 2 * wall_thickness, eps1]);
         translate([0, 0, cover_height])
-        cube([wall_thickness, cover_height + wall_thickness, eps1]);
+        cube([wall_thickness, cover_height + 2 * wall_thickness, eps1]);
     }
 }
 
