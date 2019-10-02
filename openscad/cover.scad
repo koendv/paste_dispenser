@@ -3,7 +3,7 @@
 
 $fn = 120;
 eps1 = 0.001;
-slack = 0.25; // slack around components
+slack = 0.4; // slack around components
 wall_thickness = 2.0;
 cover_height = 8.0;
 pcb_thickness = 1.6;
@@ -78,7 +78,10 @@ module cover() {
             translate([28.98, 10.644]) pinheader(3, 2);  // icp
             translate([15.772, 28.043]) pinheader(5, 1); // stepper
             translate([34.06, 17.248]) pinheader(1, 4);  // oled. XXX add support for oled screen
-            translate([37.87, 12.168]) pinheader(1, 6);  //ext vertical header
+            translate([37.87, 12.168]) pinheader(1, 6);  // ext vertical header
+            translate([34.06, 12.168]) pinheader(2, 6);  // dummy header, to avoid thin slivers
+            
+            
             // positioning data from .pos pick-and-place file 
             translate([30.377, 27.916]) led(); // led
         }

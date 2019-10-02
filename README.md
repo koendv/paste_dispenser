@@ -145,8 +145,6 @@ For the coupler between motor and leadscrew, choose between making it yourself o
 
 * [Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress) are readily available from ebay or aliexpress. Aluminum couplers easily handle the torque, but the weight of the aluminum disturbs the balance of the instrument in your hand. 
 
-* [Nylon shaft couplers](https://www.google.com/search?q=nylon+plastic+shaft+coupler+%2B"4mm"+aliexpress) only weigh a few grammes, but to get a 4mm to 5mm coupler you have to buy a 4mm to 4mm coupler and ream out one end to 5mm.
-
 * [3D-printed ABS couplers](https://github.com/koendv/paste_dispenser/raw/master/doc/coupler.jpg) are a good compromise solution. A 3D-printed coupler makes for a lightweight instrument, and can be designed to fit the stepper shaft exactly. 
 
 Print two [shaft coupler](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/coupler.stl) halves. Attach the shaft coupler halves to stepper shaft and leadscrew using four M3 x 10mm screws.
@@ -185,6 +183,8 @@ In general, avoid "unstoppable force meets inmovable object" situations. Somethi
 * A solder paste dispenser is a small motor which pushes the plunger of a syringe. You can use it for solder paste or solder flux, but the dispenser can also be used as a syringe pump, to create small dots of glue in a precise and repeatable way, or to put small drops of lubricating oil on a mechanism.
 
 * The controller is not restricted to any specific model of solder paste dispenser; if a syringe pump uses a 5- or 6-wire unipolar or a 4-wire bipolar stepper motor, there's a reasonable chance this will work. Just check the stepper works at 5V and current stays below 1.2 amps.
+
+* FDM print settings: Increase perimeters on the pieces with heat-set inserts ([motor_mount](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/motor_mount.stl) and [plunger](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/plunger.stl)); this gives the heat-set inserts more material to grip onto. 
 
 * Exactly how hard do we need to push? Take a syringe and (kitchen) scales. Grab the syringe by the syringe body, and push the syringe piston against the scales until the syringe releases solder paste. Take note of the weight the scales indicate. If the scales indicates pounds, multiply by 5 to get Newtons. If the scales indicate kilogrammes, multiply by 10 to get Newtons.
 Measured this way, pushing the plunger of 5cc and 10cc syringes of solder flux and solder paste needs a force between 20N and 30N.
