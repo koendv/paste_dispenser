@@ -22,7 +22,7 @@
 // https://www.amazon.co.uk/dp/B075XHV3GH/
 
   // Adding tweaks to compensate for my printer's tolerance.
-//  A = 5.3 + 0.3;
+//  A = 5.4 + 0.2;
 //  B = 5.8 + 0.3;
 //  L = 7.4;
 //  D = 5.0;
