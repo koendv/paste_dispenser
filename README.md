@@ -147,7 +147,7 @@ For the coupler between motor and leadscrew, choose between making it yourself o
 
 * [3D-printed ABS couplers](https://github.com/koendv/paste_dispenser/raw/master/doc/coupler.jpg) are a good compromise solution. A 3D-printed coupler makes for a lightweight instrument, and can be designed to fit the stepper shaft exactly. 
 
-Print two [shaft coupler](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/coupler.stl) halves. Ream the screw holes by hand using a 3mm drill. Attach the shaft coupler halves to stepper shaft and leadscrew using four M3 x 10mm screws.
+Print two [shaft coupler](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/coupler.stl) halves. Ream the screw holes by hand using a 3mm (wood) drill. Attach the shaft coupler halves to stepper shaft and leadscrew using four M3 x 10mm screws.
 
 Attach the stepper motor to the motor mount using two nylon or stainless steel M4x10 hex socket screws. Nylon screws keep the weight down. Attach the [syringe holder](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/syringe_holder.stl) to the motor block with two M4x10 hex socket screws.
 
