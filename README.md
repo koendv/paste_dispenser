@@ -145,7 +145,7 @@ For the coupler between motor and leadscrew, choose between making it yourself o
 
 * [Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress) are readily available from ebay or aliexpress. Aluminum couplers easily handle the torque, but the weight of the aluminum disturbs the balance of the instrument in your hand. 
 
-* [3D-printed ABS couplers](https://github.com/koendv/paste_dispenser/raw/master/doc/coupler.jpg) are a good compromise solution. A 3D-printed coupler makes for a lightweight instrument, and can be designed to fit the stepper shaft exactly. 
+* [3D-printed ABS couplers](https://github.com/koendv/paste_dispenser/raw/master/doc/coupler.jpg) make for a lightweight instrument, and can be designed to fit the stepper shaft exactly. 
 
 Print two [shaft coupler](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/coupler.stl) halves. Ream the screw holes by hand using a 3mm (wood) drill. There is a thin (0.5mm) support layer you need to pierce. Attach the shaft coupler halves to stepper shaft and leadscrew using four M3 x 10mm screws, like [this](https://github.com/koendv/paste_dispenser/raw/master/doc/coupler.jpg).
 
