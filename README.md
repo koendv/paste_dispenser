@@ -1,6 +1,6 @@
 # Solder Paste Dispenser
 
-![](https://github.com/koendv/paste_dispenser/raw/master/doc/ready.jpg)
+![](https://raw.githubusercontent.com/koendv/paste_dispenser/master/doc/ready.jpg)
 
 This is a controller board for [solder paste dispensers](https://www.thingiverse.com/thing:1119914). The controller supports unipolar and bipolar stepper motors, a foot pedal switch, an OLED display, a LED that blinks faster when the motor runs faster, and a menu system. The board has been designed with easy soldering in mind, using components size 0805 and up.
 
