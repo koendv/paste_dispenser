@@ -142,13 +142,7 @@ The stepper motor is a [28BYJ-48](https://www.adafruit.com/product/858). The mot
 
 The leadscrew is 64mm of M4 threaded rod, 0.7mm pitch. The leadscrew mates with the M4 threaded insert in the plunger.
 
-For the coupler between motor and leadscrew, choose between making it yourself or buying one.
-
-* [Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress) are readily available from ebay or aliexpress. Aluminum couplers easily handle the torque, but the weight of the aluminum disturbs the balance of the instrument in your hand. 
-
-* [3D-printed ABS couplers](https://github.com/koendv/paste_dispenser/raw/master/doc/coupler.jpg) make for a lightweight instrument, and can be designed to fit the stepper shaft exactly. 
-
-Print two [shaft coupler](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/coupler.stl) halves. Ream the screw holes by hand using a 3mm (wood) drill. There is a thin (0.5mm) support layer you need to pierce. Attach the shaft coupler halves to stepper shaft and leadscrew using four M3 x 10mm screws, like [this](https://github.com/koendv/paste_dispenser/raw/master/doc/coupler.jpg).
+The coupler between motor and leadscrew is an [Aluminum 4mm to 5mm shaft couplers](https://www.google.com/search?&q=%2B%22D19*L25%22+Shaft+Coupling+Aluminium+flexible+%2B%224x5%22+aliexpress), readily available from ebay or aliexpress. The all-metal construction easily handles the torque.
 
 Attach the stepper motor to the motor mount using two nylon or stainless steel M4x10 hex socket screws. Nylon screws keep the weight down. Attach the [syringe holder](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/syringe_holder.stl) to the motor block with two M4x10 hex socket screws.
 
@@ -158,7 +152,7 @@ Friction between rubber piston and syringe is what keeps the plunger from spinni
 
 ## Adding the Electronics
 ![](https://github.com/koendv/paste_dispenser/raw/master/doc/assembled.jpg)
-Align the pins of the PCB with the holes in the front of the motor mount. Fix the PCB in place with double-sided sticky tape. Plug the OLED display in the connector marked "SDA SCK VCC GND". Connect the stepper motor to header J3.
+Align the pins of the PCB with the holes in the front of the motor mount. Fix the PCB in place with adhesive Velcro tape. Plug the OLED display in the connector marked "SDA SCK VCC GND". Connect the stepper motor to header J3.
 
 Run 1-2m of cable from the 6-pin Dupont connector on the right of the PCB. The cable connects solder paste dispenser to a [5V TTL serial to USB converter](https://www.google.com/search?q=CH340C+site%3A.aliexpress.com) (pins +5V,RX,TX,GND) and the foot switch (pins FTSW, GND). 
 
