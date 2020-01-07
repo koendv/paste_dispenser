@@ -126,6 +126,8 @@ If you prefer not to solder SMD's you can also build the controller on a breadbo
 ## Printing your own
 ![](https://raw.githubusercontent.com/koendv/paste_dispenser/master/doc/freshly_printed.jpg)
 
+Leave part orientation as is when imported into PrusaSlicer. Designed to print without support.
+
 The [openscad/](https://github.com/koendv/paste_dispenser/tree/master/openscad) directory contains the .stl files for [3d-printing](https://www.treatstock.com/c/seaside-3d) the mechanical part of the solder paste dispenser in ABS using FDM. These parts need finishing as follows:
 
 * Take the workpiece [insert_practice](https://github.com/koendv/paste_dispenser/blob/master/openscad/aerzetix-C19143/insert_practice.stl) and place 4 heat-set inserts, as a test. Set your soldering iron to the filament extrusion temperature used during 3D printing, about 255&deg;C.
