@@ -101,8 +101,9 @@ where `/dev/ttyUSB0` is the usb port of your Arduino Uno. Flashing should take a
 
 Set the fuses of the atmega328p for an external resonator at 16MHz:
 
-	koen@raspberrypi:/opt/arduino-1.8.9/hardware/tools/avr $ ./bin/avrdude -C ./etc/avrdude.conf -c avrisp -p m328p -P /dev/ttyUSB0 -U lfuse:w:0xff:m -U hfuse:w:0xde:m -U efuse:w:0xfd:m
+	koen@raspberrypi:/opt/arduino-1.8.9/hardware/tools/avr $ ./bin/avrdude -C ./etc/avrdude.conf -c avrisp -p m328p -P /dev/ttyACM0 -b 19200  -U lfuse:w:0xff:m -U hfuse:w:0xda:m -U efuse:w:0xfd:m
 
+The avrdude output ought to say: ```avrdude: safemode: Fuses OK (E:FD, H:DA, L:FF)```
 
 This finishes writing bootloader and sketch to the solder paste dispenser. Disconnect the Arduino Uno. The atmega328p now contains a bootloader. Sketches can now be uploaded using the solder paste dispenser serial port.
 
