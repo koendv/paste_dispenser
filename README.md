@@ -1,11 +1,11 @@
 # Solder Paste Dispenser
 
-![](https://raw.githubusercontent.com/koendv/paste_dispenser/master/doc/ready.jpg)
+![](https://raw.githubusercontent.com/koendv/paste_dispenser/master/doc/paste_dispenser.jpg)
 
 This is a controller board for [solder paste dispensers](https://www.thingiverse.com/thing:1119914). The controller supports unipolar and bipolar stepper motors, a foot pedal switch, an OLED display, a LED that blinks faster when the motor runs faster, and a menu system. The board has been designed with easy soldering in mind, using components size 0805 and up.
 
 ## Foot switch
-
+![](https://raw.githubusercontent.com/koendv/paste_dispenser/master/doc/footswitch.jpg)
 Dispensing can be initiated either by pressing the *push* button on the dispenser, or by pushing down a foot pedal switch.
 
 A foot pedal switch has the advantage that it frees up a hand. Using a foot switch is also more stable; pushing a button on the solder dispenser always moves the syringe tip a little bit.
