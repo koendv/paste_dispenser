@@ -2,7 +2,7 @@
 
 ![](https://raw.githubusercontent.com/koendv/paste_dispenser/master/doc/paste_dispenser.jpg)
 
-This is a controller board for [solder paste dispensers](https://www.thingiverse.com/thing:1119914). The controller supports unipolar and bipolar stepper motors, a foot pedal switch, an OLED display, a LED that blinks faster when the motor runs faster, and a menu system. The board has been designed with easy soldering in mind, using components size 0805 and up.
+This is a solder paste dispenser. The controller supports unipolar and bipolar stepper motors, a foot pedal switch, an OLED display, a LED that blinks faster when the motor runs faster, and a menu system. The board has been designed with easy soldering in mind, using components size 0805 and up.
 
 ## Foot switch
 ![](https://raw.githubusercontent.com/koendv/paste_dispenser/master/doc/footswitch.jpg)
@@ -45,7 +45,7 @@ If *forward steps* is zero, the syringe plunger is pushed down as long as you pr
 Backward speed can only be set using the console menu.
 
 ### Pullback
-Sometimes liquid keeps oozing out after you stop dispensing. If *pullback steps* is non-zero, then after a *pullback delay* period of inactivity the plunger will move back *pullback steps*, to stop liquid oozing out. How successful this is and how many steps the plunger needs to pull back to stop the oozing depends upon the viscosity of the liquid. *Pullback* works better with low viscosity liquids than with high viscosity paste.
+Sometimes liquid keeps oozing out after you stop dispensing. If *pullback steps* is non-zero, then after a *pullback delay* period of inactivity the plunger will move back *pullback steps*, to stop liquid oozing out. How successful this is and how many steps the plunger needs to pull back to stop the oozing depends upon the viscosity of the liquid. *Pullback* works better with low viscosity liquids than with high viscosity paste. Pullback is interesting if you use this as a dispenser for e.g. cyanoacrylate glue.
 
 ### Microstepping
 The controller supports up to 1/64 microstepping. This is open loop voltage control microstepping.
