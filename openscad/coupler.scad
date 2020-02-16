@@ -66,17 +66,20 @@ module halfcoupler_body() {
 
 module clamping_screw() {
     union() {
-        cylinder(d = screw_hole_diameter, h = coupler_width);
+        rotate([0, 0, 180/8])
+        cylinder_outer(d = screw_hole_diameter, h = coupler_width, fn=8);
         translate([0, 0, -coupler_width])
-        cylinder(d = screw_head_diameter, h = coupler_width);
+        rotate([0, 0, 180/8])
+        cylinder_outer(d = screw_head_diameter, h = coupler_width, fn=8);
     }
 }
 
 module clamping_nut() {
     union() {
-        cylinder(d = screw_hole_diameter, h = coupler_width);
+        rotate([0, 0, 180/8])
+        cylinder_outer(d = screw_hole_diameter, h = coupler_width, fn=8);
         translate([0, 0, -coupler_width])
-        cylinder(d = screw_nut_diameter, h = coupler_width, $fn = 6);
+        cylinder_outer(d = screw_nut_diameter, h = coupler_width, fn = 6);
     }
 }
 
